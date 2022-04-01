@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+
+    <script id="link" type="text/html">
+        <a-entity class="link"
+          geometry="primitive: plane; height: 1; width: 1"
+          material="shader: flat; src: ${thumb}"
+          event-set__mouseenter="scale: 1.2 1.2 1;_target: #image-360; _delay: 300; material.src: ${src}"
+          event-set__mouseleave="scale: 1 1 1"
+          event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+          proxy-event="event: click; to: #image-360; as: fade"
+          sound="on: click; src: #click-sound"></a-entity>
+      </script>
+
+    <title>Home</title>
+</head>
+<body>
+   <a-scene>
+       <a-asset>
+            <video id="vid01" volume="0" src="./video/aaa.mp4" autoplay loop="true"></video>
+            <video id="vid02" volume="0" src="./video/Temple_01_1.mp4" autoplay loop="true"></video>
+            <video id="vid03" volume="0" src="./video/Dadaocheng_Gate (1).mp4" autoplay loop="true"></video>
+            <video id="vid04" volume="0" src="./video/event01_1.mp4" autoplay loop="true"></video>
+            <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+            <img id="bg" src="./Image/testpic (1).jpg" alt="">
+        </a-asset>
+
+        <!-- <a-sky id="MainBG" src="#bg" radius="10"
+        animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+                        animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky> -->
+
+        <!-- <a-videosphere src="#vid04" 
+                        rotation="0 -90 0"
+                        animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+                        animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-videosphere> -->
+
+
+        <!-- <a-entity id="links" layout="type: line; margin: 1.5" position="0 -0.2 -4" >
+            <a-entity 
+            link="href:Parade.html"
+            template="src: #link" 
+            data-src="#bg" 
+            data-thumb="#vid04">
+          </a-entity>
+        </a-entity> -->
+
+        <a-camera>
+            <a-cursor color="#4CC3D9"></a-cursor>
+        </a-camera>
+
+
+       <!-- Image primitive -->
+       <!-- <a-curvedimage src="#vid01"
+                    theta-length="50"
+                    theta-start="100"
+                    radius="2"
+                    position="0 1.5 0"></a-curvedimage> -->
+        
+        <a-curvedimage src="#vid02"
+                    theta-length="50"
+                    theta-start="100"
+                    radius="2"
+                    position="0 1.5 0"></a-curvedimage>
+
+        <a-curvedimage src="#vid03"
+                    theta-length="50"
+                    theta-start="100"
+                    radius="2"
+                    position="5 1.5 5"></a-curvedimage>
+
+        <a-curvedimage src="#vid04"
+                    theta-length="50"
+                    theta-start="100"
+                    radius="2"
+                    position="10 1.5 10"></a-curvedimage>
+        
+
+        <!-- <a-link href="Parade.html" title="Parade" video="#vid04"></a-link> -->
+   </a-scene>
+</body>
+</html>

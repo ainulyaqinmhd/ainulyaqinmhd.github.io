@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent("play-pause", {
+        init: function () {
+          var myVideo = document.querySelector("#parade");
+          var videoControls = document.querySelector("#videoControls");
+          this.el.addEventListener("mouseenter", function () {
+            if (myVideo.paused) {
+              myVideo.play();
+              videoControls.setAttribute("src", "#pause");
+            } else {
+              myVideo.pause();
+              videoControls.setAttribute("src", "#play");
+            }
+          });
+        },
+      });
+    </script>
+    <title>Parade</title>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="play" src="/Assets/Icon/play.png" />
+        <img id="pause" src="/Assets/Icon/pause.png" />
+        <img id="home" src="/Assets/Icon/home.png" alt="" />
+
+        <video
+          id="parade"
+          src="/Assets/video/event01_1_1.mp4"
+          loop="true"
+        ></video>
+
+        <audio
+          id="click-sound"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"
+        ></audio>
+      </a-assets>
+
+      <a-camera>
+        <a-cursor color="#4CC3D9" scale="2 2 2"></a-cursor>
+      </a-camera>
+
+      <a-text
+        font="kelsonsans"
+        value="Dadaocheng Anual Parade"
+        text-align="center"
+        width="10"
+        position="-20 2.8 -20"
+        rotation="10 30 3"
+        color="white"
+        wrap-count="30"
+      ></a-text>
+
+      <a-videosphere src="#parade" rotation="0 -90 0"></a-videosphere>
+
+      <a-image
+        id="videoControls"
+        src="#play"
+        sound="#click-sound"
+        position="0 1.5 -2"
+        scale="0.2 0.2 1"
+        play-pause
+      ></a-image>
+
+      <a-image src="#home" position="0 2.7 -2" scale="0.2 0.2 1"></a-image>
+    </a-scene>
+  </body>
+</html>

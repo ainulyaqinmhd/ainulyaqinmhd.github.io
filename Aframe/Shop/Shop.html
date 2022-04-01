@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent("play-pause", {
+        init: function () {
+          var myVideo = document.querySelector("#shop");
+          var videoControls = document.querySelector("#videoControls");
+          this.el.addEventListener("mouseenter", function () {
+            if (myVideo.paused) {
+              myVideo.play();
+              videoControls.setAttribute("src", "#pause");
+            } else {
+              myVideo.pause();
+              videoControls.setAttribute("src", "#play");
+            }
+          });
+        },
+      });
+    </script>
+    <script src="https://raw.githubusercontent.com/aframevr/aframe/master/examples/showcase/link-traversal/js/components/link-controls.js"></script>
+
+    <!-- <script id="link" type="text/html">
+            <a-entity class="link"
+              geometry="primitive: plane; height: 1; width: 1"
+              material="shader: flat; src: ${thumb}"
+              event-set__mouseenter="scale: 1.2 1.2 1;_target: #image-360; _delay: 300; material.src: ${src}"
+              event-set__mouseleave="scale: 1 1 1"
+              event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+              proxy-event="event: click; to: #image-360; as: fade"
+              sound="on: click; src: #click-sound"></a-entity>
+          </script> -->
+
+    <title>Parade</title>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="play" src="/Assets/Icon/play.png" />
+        <img id="pause" src="/Assets/Icon/pause.png" />
+        <img id="home" src="/Assets/Icon/home.png" alt="" />
+        <video id="shop" src="/Assets/video/Gate_1.mp4" loop="true"></video>
+        <audio
+          id="click-sound"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"
+        ></audio>
+      </a-assets>
+
+      <a-camera>
+        <a-cursor color="#4CC3D9" scale="2 2 2"></a-cursor>
+      </a-camera>
+
+      <a-text
+        font="kelsonsans"
+        value="Dadaocheng Shopping District"
+        text-align="center"
+        width="10"
+        position="10.4 4.3 -20"
+        rotation="0 -20 0"
+        shadow="1 1 1"
+        color="white"
+        wrap-count="30"
+      ></a-text>
+
+      <!-- <a-entity id="links" layout="type: line; margin: 1.5" position="0 -0.2 -4">
+        <a-entity 
+        link="href=/Website/index.html"
+        template="src: #link" 
+        data-src="#home" 
+        data-thumb="#home">
+      </a-entity>
+      </a-entity> -->
+
+      <a-videosphere src="#shop" rotation="0 0 0"></a-videosphere>
+
+      <a-image
+        id="videoControls"
+        src="#play"
+        sound="#click-sound"
+        position="0 1.5 -2"
+        scale="0.2 0.2 1"
+        play-pause
+      ></a-image>
+
+      <!-- <a-image src="#home" position="0 2.7 -2" scale="0.2 0.2 1"><a-link href="http://127.0.0.1:5500/Website/index.html#"></a-link></a-image> -->
+      <a-image src="#home" position="0 2.7 -2" scale="0.2 0.2 1"></a-image>
+    </a-scene>
+  </body>
+</html>
