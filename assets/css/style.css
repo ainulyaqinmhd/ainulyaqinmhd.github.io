@@ -18,7 +18,10 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #040404 url("../img/bg.jpg") top right no-repeat;
+  /* background: #040404 url("../img/bg.jpg") top right no-repeat; */
+  background: #040404
+    url("https://images.unsplash.com/photo-1500322445725-b4a8e9d80f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80")
+    top right no-repeat;
   background-size: cover;
   left: 0;
   right: 0;
@@ -608,7 +611,9 @@ section .container {
   background: #18d26e;
   border: 2px solid #18d26e;
 }
-
+.PE {
+  font-size: 8px;
+}
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
