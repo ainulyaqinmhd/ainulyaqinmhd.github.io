@@ -39,7 +39,8 @@ a {
 }
 
 a:hover {
-  color: #35e888;
+  /* color: #35e888; */
+  color: #e39d2d;
   text-decoration: none;
 }
 
@@ -346,7 +347,8 @@ section .container {
   width: 120px;
   height: 1px;
   display: inline-block;
-  background: #4ceb95;
+  background: #e39d2d;
+  /* background: #4ceb95; */
   margin: 4px 10px;
 }
 .section-title p {
@@ -677,7 +679,8 @@ section .container {
   color: #e39d2d;
 }
 .services .icon-box:hover .icon::before {
-  background: #35e888;
+  /* background: #35e888; */
+  background: #e39d2d;
 }
 .services .icon-box:hover h4 a,
 .services .icon-box:hover p {
