@@ -10,6 +10,7 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
+  /* font-family: "Garet", sans-serif; */
   background-color: #040404;
   color: #fff;
   position: relative;
@@ -788,7 +789,7 @@ section .container {
 }
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, .9);
   position: absolute;
   left: 30px;
   right: 30px;
@@ -863,7 +864,7 @@ section .container {
   transition: 0.3s;
 }
 .portfolio .portfolio-wrap .portfolio-links a:hover {
-  color: #63eda3;
+  color: #e39d2d;
 }
 .portfolio .portfolio-wrap:hover::before {
   top: 0;
