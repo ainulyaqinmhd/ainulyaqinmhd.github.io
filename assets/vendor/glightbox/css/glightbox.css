@@ -349,6 +349,7 @@
 .glightbox-mobile .glightbox-container .gslide-title {
   color: #fff;
   font-size: 1em;
+  text-align: center;
 }
 
 .glightbox-mobile .glightbox-container .gslide-desc {
@@ -514,10 +515,11 @@ iframe.wait-autoplay {
 .glightbox-clean .gslide-title {
   font-size: 1em;
   font-weight: normal;
-  font-family: arial;
+  font-family: rale;
   color: #000;
   margin-bottom: 19px;
   line-height: 1.4em;
+  text-align: center;
 }
 
 .glightbox-clean .gslide-desc {

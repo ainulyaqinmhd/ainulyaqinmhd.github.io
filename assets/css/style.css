@@ -565,7 +565,7 @@ section .container {
 /*--------------------------------------------------------------
 # Resume
 --------------------------------------------------------------*/
-.resume .resume-title {
+.resume .resume-  {
   font-size: 26px;
   font-weight: 700;
   margin-top: 20px;
@@ -789,7 +789,7 @@ section .container {
 }
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(0, 0, 0, .9);
+  background: rgba(0, 0, 0, 0.9);
   position: absolute;
   left: 30px;
   right: 30px;
