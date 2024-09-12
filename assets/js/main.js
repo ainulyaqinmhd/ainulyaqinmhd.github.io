@@ -245,3 +245,37 @@
   });
 
 })()
+
+const roles = ["UX Researcher ", "Interaction Designer ", "AI-Data Enthusiast "];
+let i = 0;
+let j = 0;
+let currentRole = '';
+let isDeleting = false;
+const typingSpeed = 200;
+const deletingSpeed = 100;
+const pauseBetweenRoles = 1000;
+
+function type() {
+  const target = document.getElementById("typing-text");
+
+  if (isDeleting) {
+    currentRole = roles[i].substring(0, j--);
+  } else {
+    currentRole = roles[i].substring(0, j++);
+  }
+
+  target.innerHTML = currentRole;
+
+  if (!isDeleting && j === roles[i].length) {
+    isDeleting = true;
+    setTimeout(type, pauseBetweenRoles); // Pause before deleting
+  } else if (isDeleting && j === 0) {
+    isDeleting = false;
+    i = (i + 1) % roles.length; // Move to the next role
+    setTimeout(type, typingSpeed); // Start typing the next role
+  } else {
+    setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", type);

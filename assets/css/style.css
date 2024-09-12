@@ -362,6 +362,28 @@ section .container {
   color: #fff;
 }
 
+#typing-text {
+  /* font-family: monospace; */
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* display: inline-block; */
+  width: 12ch; 
+  /* border-right: 2px solid; */
+}
+
+.typed-cursor {
+  font-weight: bold;
+  /* font-size: 2em; */
+  /* line-height: 12rem; */
+  animation: blink-cursor 0.9s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  from, to { opacity: 1; }
+  50% { opacity: 0; border-color: #e39d2d;}
+}
+
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
