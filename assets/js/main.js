@@ -246,6 +246,7 @@
 
 })()
 
+
 const roles = ["UX Researcher ", "Interaction Designer ", "AI-Data Enthusiast "];
 let i = 0;
 let j = 0;
