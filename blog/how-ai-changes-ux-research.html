@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>How AI is Changing the Way We Do UX Research — Muhammad A. Yaqin</title>
+  <meta name="description" content="From automated sentiment analysis to AI-driven user clustering — exploring how NLP tools are reshaping qualitative research workflows.">
+
+  <link href="../assets/img/page0.png" rel="icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">MAY.</a>
+      <div class="nav-links">
+        <a href="../index.html#work" class="nav-link">Work</a>
+        <a href="../index.html#research" class="nav-link">Research</a>
+        <a href="../index.html#about" class="nav-link">About</a>
+        <a href="../blog.html" class="nav-link active">Blog</a>
+        <a href="../index.html#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="../index.html#work" class="nav-link">Work</a>
+    <a href="../index.html#research" class="nav-link">Research</a>
+    <a href="../index.html#about" class="nav-link">About</a>
+    <a href="../blog.html" class="nav-link">Blog</a>
+    <a href="../index.html#contact" class="nav-link">Contact</a>
+  </div>
+
+  <!-- Post Hero -->
+  <div class="post-hero">
+    <div class="page-wrap">
+      <p class="post-category">Research</p>
+      <h1 class="post-title">How AI is Changing the Way We Do UX Research</h1>
+      <div class="post-meta">
+        <span>Muhammad A. Yaqin</span>
+        <span>Apr 10, 2026</span>
+        <span>6 min read</span>
+      </div>
+      <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" alt="AI and UX Research" class="post-hero-img">
+    </div>
+  </div>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <p>
+      As a PhD candidate researching the intersection of HCI and NLP, I've been watching a significant shift in how UX researchers approach their work. Traditional qualitative methods — interviews, think-alouds, contextual inquiry — remain irreplaceable. But AI is adding powerful new layers to our toolkit.
+    </p>
+
+    <h2>The Promise: Scaling Qualitative Insight</h2>
+    <p>
+      The biggest challenge in qualitative UX research has always been scale. Analyzing interviews takes hours. Coding thematic data takes days. Sentiment analysis, topic modeling, and automated clustering can compress that timeline dramatically — not to replace human judgment, but to surface patterns we might otherwise miss.
+    </p>
+    <p>
+      In my own research, I've used NLP-based sentiment analysis to evaluate collaborative VR mind mapping sessions. Instead of manually coding hundreds of text responses, we automated the initial classification and then refined the results by hand. The hybrid approach saved roughly 60% of analysis time while maintaining rigor.
+    </p>
+
+    <blockquote>
+      AI doesn't replace the researcher's eye — it amplifies it. The tool finds the signal; the researcher interprets the meaning.
+    </blockquote>
+
+    <h2>Three Tools Worth Exploring</h2>
+    <p>
+      If you're a UX researcher curious about integrating AI into your workflow, here are three starting points:
+    </p>
+    <ul>
+      <li><strong>BERTopic</strong> — For topic modeling on open-ended survey responses. It clusters similar responses and labels them, giving you a bird's-eye view of user concerns.</li>
+      <li><strong>Whisper + GPT</strong> — Transcribe user interviews with Whisper, then use GPT to generate initial thematic codes. Review and refine manually.</li>
+      <li><strong>Custom embeddings</strong> — Use sentence transformers (like all-MiniLM-L6-v2) to embed user feedback and visualize clusters in 2D space with UMAP.</li>
+    </ul>
+
+    <h2>The Risk: Losing the Human Thread</h2>
+    <p>
+      There's a real danger in over-relying on automated analysis. Numbers and clusters can obscure the individual stories that give UX research its power. A sentiment score of "0.72 positive" tells you very little about <em>why</em> a user felt that way, or what specific moment triggered the emotion.
+    </p>
+    <p>
+      The best approach I've found is to use AI for the first pass — pattern detection, anomaly flagging, volume analysis — and then dive deep with traditional methods on the most interesting findings.
+    </p>
+
+    <h2>What's Next</h2>
+    <p>
+      I'm particularly excited about real-time analysis during usability sessions. Imagine running a think-aloud test where an AI companion highlights emotional spikes, confusion patterns, or task failures <em>as they happen</em>, giving the facilitator live prompts to probe deeper.
+    </p>
+    <p>
+      This isn't science fiction — the building blocks (real-time transcription, emotion detection, task modeling) already exist. The challenge is integration and trust. Researchers need to trust the tool enough to act on its suggestions mid-session without being distracted by it.
+    </p>
+
+    <h2>Final Thought</h2>
+    <p>
+      AI is changing UX research the same way it's changing every other knowledge discipline: by compressing the tedious parts and expanding the creative parts. The researchers who thrive will be the ones who learn to wield these tools while keeping their human instincts sharp.
+    </p>
+  </article>
+
+  <!-- Post Navigation -->
+  <div class="post-nav">
+    <a href="../blog.html" class="btn-outline">← Back to Blog</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="background: var(--color-dark);">
+    <div class="footer-inner">
+      <p class="footer-text">© 2025 Muhammad A. Yaqin. All Rights Reserved.</p>
+      <p class="footer-text">
+        <a href="../index.html">Home</a> ·
+        <a href="../blog.html">Blog</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

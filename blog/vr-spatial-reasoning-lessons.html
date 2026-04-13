@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What I Learned Building a VR Spatial Reasoning System — Muhammad A. Yaqin</title>
+  <meta name="description" content="Lessons from designing and evaluating a VR application that helps students develop spatial reasoning perception.">
+  <link href="../assets/img/page0.png" rel="icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">MAY.</a>
+      <div class="nav-links">
+        <a href="../index.html#work" class="nav-link">Work</a>
+        <a href="../index.html#research" class="nav-link">Research</a>
+        <a href="../index.html#about" class="nav-link">About</a>
+        <a href="../blog.html" class="nav-link active">Blog</a>
+        <a href="../index.html#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="../index.html#work" class="nav-link">Work</a>
+    <a href="../index.html#research" class="nav-link">Research</a>
+    <a href="../index.html#about" class="nav-link">About</a>
+    <a href="../blog.html" class="nav-link">Blog</a>
+    <a href="../index.html#contact" class="nav-link">Contact</a>
+  </div>
+
+  <div class="post-hero">
+    <div class="page-wrap">
+      <p class="post-category">Virtual Reality</p>
+      <h1 class="post-title">What I Learned Building a VR Spatial Reasoning System</h1>
+      <div class="post-meta">
+        <span>Muhammad A. Yaqin</span>
+        <span>Mar 15, 2026</span>
+        <span>5 min read</span>
+      </div>
+      <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=1200&q=80" alt="VR Research" class="post-hero-img">
+    </div>
+  </div>
+
+  <article class="post-content">
+    <p>
+      My research on VR spatial reasoning, published in IEEE Transactions on Education, was one of the most technically and methodologically challenging projects I've worked on. The goal was straightforward: can a VR immersive environment improve spatial reasoning perception in students? The journey to answer that question taught me as much about research design as it did about virtual reality.
+    </p>
+
+    <h2>The Setup</h2>
+    <p>
+      We designed a VR application that presents spatial reasoning tasks — mental rotation, perspective-taking, and spatial visualization — in an immersive 3D environment. Students could manipulate objects with their hands, walk around structures, and experience spatial relationships from angles impossible in a 2D textbook.
+    </p>
+    <p>
+      The experimental design compared VR-based learning against traditional instruction using pre/post spatial reasoning assessments.
+    </p>
+
+    <h2>What Worked</h2>
+    <p>
+      The immersion factor was significant. Students who struggled with 2D spatial tasks often had "aha moments" when they could physically walk around a 3D object. One participant described it as "finally understanding what my professor was drawing on the whiteboard."
+    </p>
+    <p>
+      The data showed measurable improvement in spatial reasoning scores for the VR group, particularly for tasks involving perspective-taking.
+    </p>
+
+    <h2>What Surprised Me</h2>
+    <p>
+      Two unexpected findings stood out:
+    </p>
+    <ul>
+      <li><strong>Motion sickness was a real barrier</strong> — Even with a well-optimized application, about 15% of participants reported moderate discomfort. We had to adjust session duration and movement mechanics mid-study.</li>
+      <li><strong>Novelty effect</strong> — First-time VR users spent significant time simply <em>exploring</em> the environment rather than focusing on the learning task. In future studies, I'd include a dedicated VR familiarization period before the actual experiment.</li>
+    </ul>
+
+    <h2>Design Lessons for VR Researchers</h2>
+    <p>
+      If you're building VR applications for research, here's what I'd emphasize:
+    </p>
+    <ul>
+      <li><strong>Pilot relentlessly</strong> — Test with at least 5 participants before your main study. Technical issues that seem minor on your development machine can torpedo an entire session for a novice user.</li>
+      <li><strong>Record everything</strong> — We captured head tracking data, hand trajectories, and screen recordings. This multi-modal data proved invaluable during analysis.</li>
+      <li><strong>Design for the first 30 seconds</strong> — Users form their impression of VR comfort in the first half-minute. Make those seconds smooth, predictable, and welcoming.</li>
+    </ul>
+
+    <blockquote>
+      VR research is equal parts software engineering, experimental design, and empathy. You can't separate the experience from the measurement.
+    </blockquote>
+
+    <h2>What's Next</h2>
+    <p>
+      I'm now exploring how multi-user VR environments affect collaborative spatial reasoning. The early results from our FU Berlin collaboration suggest that social presence amplifies learning — but also introduces new variables like turn-taking dynamics and communication overhead. More on that in a future post.
+    </p>
+  </article>
+
+  <div class="post-nav">
+    <a href="../blog.html" class="btn-outline">← Back to Blog</a>
+  </div>
+
+  <footer class="site-footer" style="background: var(--color-dark);">
+    <div class="footer-inner">
+      <p class="footer-text">© 2025 Muhammad A. Yaqin. All Rights Reserved.</p>
+      <p class="footer-text"><a href="../index.html">Home</a> · <a href="../blog.html">Blog</a></p>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
