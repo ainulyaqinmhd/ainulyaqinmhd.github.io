@@ -1,1 +1,0 @@
-## ainulyaqinmhd.gihub.io
