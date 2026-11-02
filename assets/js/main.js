@@ -141,7 +141,7 @@
     const target = document.getElementById("typing-text");
     if (!target) return;
 
-    const roles = ["UX Researcher", "Interaction Designer", "AI-Data Enthusiast"];
+    const roles = ["Assistant Professor", "UX Researcher", "Interaction Designer", "AIGC Researcher"];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -186,6 +186,154 @@
     });
   }
 
+  /* ─── Read More: show the first N items under each h3[data-show] ─── */
+  function initReadMore() {
+    document.querySelectorAll("h3[data-show]").forEach((heading) => {
+      const limit = parseInt(heading.dataset.show, 10);
+      const items = [];
+      let el = heading.nextElementSibling;
+      while (el && el.classList.contains("research-item")) {
+        items.push(el);
+        el = el.nextElementSibling;
+      }
+      const extra = items.slice(limit);
+      if (!extra.length) return;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "read-more-btn";
+      items[items.length - 1].after(btn);
+
+      function render(expanded, animate) {
+        extra.forEach((item, i) => {
+          item.hidden = !expanded;
+          item.classList.remove("is-revealed");
+          if (expanded && animate) {
+            void item.offsetWidth; // restart the fade-in on every expand
+            item.style.animationDelay = `${i * 60}ms`;
+            item.classList.add("is-revealed");
+          }
+        });
+        // The last visible item fades away while the list is collapsed
+        items[limit - 1].classList.toggle("is-faded", !expanded);
+        btn.setAttribute("aria-expanded", expanded);
+        btn.innerHTML = expanded
+          ? 'Show less <i class="bi bi-chevron-up"></i>'
+          : `Read more (${extra.length}) <i class="bi bi-chevron-down"></i>`;
+      }
+
+      render(false);
+      btn.addEventListener("click", () => {
+        const expanded = btn.getAttribute("aria-expanded") !== "true";
+        render(expanded, true);
+        if (!expanded && heading.getBoundingClientRect().top < 0) {
+          heading.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+  }
+
+  /* ─── Project Popup: cards with data-project open details from #project-data ─── */
+  function initProjectModal() {
+    const modal = document.getElementById("project-modal");
+    const dataEl = document.getElementById("project-data");
+    if (!modal || !dataEl || !modal.showModal) return;
+
+    const projects = JSON.parse(dataEl.textContent);
+    const field = (name) => modal.querySelector(`[data-field="${name}"]`);
+    const linkIcons = {
+      github: '<i class="bi bi-github"></i>',
+      hf: "🤗",
+      live: '<i class="bi bi-box-arrow-up-right"></i>',
+      code: '<i class="bi bi-code-slash"></i>',
+      page: '<i class="bi bi-journal-text"></i>',
+      video: '<i class="bi bi-play-circle"></i>',
+    };
+
+    function fillList(el, items, tag) {
+      el.replaceChildren(
+        ...items.map((text) => {
+          const node = document.createElement(tag);
+          node.textContent = text;
+          return node;
+        })
+      );
+    }
+
+    function open(id) {
+      const p = projects[id];
+      if (!p) return false;
+
+      modal.dataset.cat = p.cat;
+      modal.querySelector(".project-modal-media").style.backgroundImage = `url('${p.img}')`;
+      field("label").textContent = p.label;
+      field("title").textContent = p.title;
+
+      const video = field("video");
+      video.replaceChildren();
+      video.hidden = !p.video;
+      if (p.video) {
+        const frame = document.createElement("iframe");
+        frame.src = p.video;
+        frame.title = p.title;
+        frame.allow = "autoplay; encrypted-media; fullscreen; picture-in-picture";
+        frame.allowFullscreen = true;
+        video.append(frame);
+      }
+
+      // Summary may hold several paragraphs separated by a blank line
+      fillList(field("summary"), (p.summary || "").split("\n\n").filter(Boolean), "p");
+      fillList(field("highlights"), p.highlights || [], "li");
+      fillList(field("tech"), p.tech || [], "span");
+      // Hide a section (and its heading) when the project has nothing for it
+      ["highlights", "tech"].forEach((name) => {
+        const empty = !(p[name] && p[name].length);
+        field(name).hidden = empty;
+        field(name).previousElementSibling.hidden = empty;
+      });
+      field("note").textContent = p.note || "";
+      field("note").hidden = !p.note;
+
+      field("links").replaceChildren(
+        ...p.links.map(([label, url, kind], i) => {
+          const a = document.createElement("a");
+          a.href = url;
+          // Case-study pages on this site open in the same tab
+          if (kind !== "page") {
+            a.target = "_blank";
+            a.rel = "noopener";
+          }
+          a.className = i === 0 ? "btn-primary" : "btn-outline";
+          a.innerHTML = `${linkIcons[kind] || ""} `;
+          a.append(label);
+          return a;
+        })
+      );
+
+      modal.showModal();
+      modal.scrollTop = 0;
+      document.body.style.overflow = "hidden";
+      return true;
+    }
+
+    document.addEventListener("click", (e) => {
+      const card = e.target.closest("a[data-project]");
+      // Let ctrl/cmd/shift-click still open the project in a new tab
+      if (!card || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+      if (open(card.dataset.project)) e.preventDefault();
+    });
+
+    modal.querySelector(".project-modal-close").addEventListener("click", () => modal.close());
+    // Clicking the dimmed backdrop (outside the panel) closes it
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.close();
+    });
+    modal.addEventListener("close", () => {
+      document.body.style.overflow = "";
+      field("video").replaceChildren(); // stop any playing video
+    });
+  }
+
   /* ─── Contact Form (mailto fallback for GitHub Pages) ─── */
   function initContactForm() {
     const form = document.getElementById("contact-form");
@@ -213,6 +361,8 @@
     initPortfolioToggle();
     initTypingEffect();
     initSmoothScroll();
+    initReadMore();
+    initProjectModal();
     initContactForm();
   });
 })();
