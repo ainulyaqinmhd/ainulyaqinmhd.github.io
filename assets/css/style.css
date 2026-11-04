@@ -1995,6 +1995,64 @@ section {
   color: var(--color-text-muted);
 }
 
+/* Studio tools: interactive worksheets linked from a course page */
+.studio-tool {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 24px;
+  margin-bottom: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  transition: border-color 0.3s ease, transform 0.3s var(--ease-out);
+}
+.studio-tool:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+.studio-tool-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: rgba(227, 157, 45, 0.14);
+  color: var(--color-accent-dark);
+  font-size: 26px;
+}
+.post-content .studio-tool h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  color: var(--color-text);
+}
+.post-content .studio-tool p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.studio-tool-meta {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+.studio-tool-go {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent-dark);
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .studio-tool {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
 /* ================================================================
    CASE STUDY PAGE
    ================================================================ */

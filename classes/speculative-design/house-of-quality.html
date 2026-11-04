@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Speculative House of Quality — Speculative Design, Yuan Ze University</title>
+<meta name="description" content="Studio worksheet for the Speculative Design course: map who lives in your 2045 world, what they need, and which features your speculative object will build for them.">
+<link href="../../assets/img/page0.png" rel="icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a drafting sheet. Header form, then the house (roof over a fixed-width grid), then key + auto insights. */
+:root {
+  --paper: #EEF1F0;
+  --sheet: #FBFCFB;
+  --ink: #17212B;
+  --muted: #55626D;
+  --line: #C3CCCF;
+  --grid: #E2E7E7;
+  --accent: #1F6F8B;
+  --accent-soft: #DCECF1;
+  --roof: #E8F1F3;
+  --crit: #B4370F;
+  --crit-soft: #FBE3DA;
+  --warn: #855600;
+  --warn-soft: #F7ECD0;
+  --good: #2C6837;
+  --good-soft: #DEEFE1;
+  --display: 'Archivo', 'Arial Narrow', Arial, sans-serif;
+  --body: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --need-w: 280px;
+  --imp-w: 96px;
+  --fw: 120px;
+  --served-w: 140px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10171C; --sheet: #172129; --ink: #E6ECEE; --muted: #9DABB4; --line: #34434E; --grid: #233039;
+    --accent: #6FB9D4; --accent-soft: #1C3540; --roof: #1A2A32; --crit: #F28B67; --crit-soft: #3B2219;
+    --warn: #E4B65B; --warn-soft: #352B16; --good: #7FC68D; --good-soft: #1B3321; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10171C; --sheet: #172129; --ink: #E6ECEE; --muted: #9DABB4; --line: #34434E; --grid: #233039;
+  --accent: #6FB9D4; --accent-soft: #1C3540; --roof: #1A2A32; --crit: #F28B67; --crit-soft: #3B2219;
+  --warn: #E4B65B; --warn-soft: #352B16; --good: #7FC68D; --good-soft: #1B3321; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 56px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; }
+h2 { font-size: 22px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.lead { color: var(--muted); max-width: 68ch; }
+header.top { display: flex; flex-direction: column; gap: 8px; }
+
+/* Course bar: links the worksheet back to the course page on the main site */
+.course-bar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; font-size: 14px; }
+.course-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.course-bar a:hover { text-decoration: underline; }
+.course-bar .crumb { color: var(--muted); }
+
+.panel { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field label { font-size: 13px; font-weight: 600; color: var(--muted); }
+input[type="text"], textarea, select {
+  font: inherit; color: var(--ink); background: var(--sheet);
+  border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: 100%;
+}
+textarea { resize: vertical; min-height: 64px; }
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { font: inherit; font-weight: 600; font-size: 15px; border-radius: 6px; padding: 8px 14px; cursor: pointer; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--sheet); }
+.btn.small { font-size: 13px; padding: 5px 10px; }
+.status { font-size: 14px; color: var(--muted); }
+
+.banner { background: var(--accent-soft); border-radius: 8px; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.banner p { font-size: 15px; }
+
+/* The house */
+.house-scroll { overflow-x: auto; padding-bottom: 8px; }
+.house { display: grid; width: max-content; }
+.cell { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--sheet); min-width: 0; }
+.blank { background: transparent; border: none; }
+.roof-label { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 0 16px 14px 0; font-size: 14px; color: var(--muted); }
+.roof-wrap { display: flex; align-items: flex-end; }
+.roof-wrap svg { display: block; overflow: visible; }
+.roof-wrap polygon.outline { fill: var(--roof); stroke: var(--ink); stroke-width: 1.5; }
+.roof-wrap g.pair { cursor: pointer; }
+.roof-wrap g.pair polygon { fill: transparent; stroke: var(--line); stroke-width: 1; }
+.roof-wrap g.pair:hover polygon, .roof-wrap g.pair:focus polygon { fill: var(--accent-soft); stroke: var(--accent); }
+.roof-wrap g.pair:focus { outline: none; }
+.roof-wrap g.pair text { font-family: var(--mono); font-size: 18px; font-weight: 600; text-anchor: middle; fill: var(--ink); pointer-events: none; }
+.roof-wrap g.pair.neg text { fill: var(--crit); }
+.roof-wrap g.pair.pos text { fill: var(--good); }
+
+.hrow-first { border-top: 1px solid var(--line); }
+.hcol-first { border-left: 1px solid var(--line); }
+.head { background: var(--grid); padding: 10px 12px; font-family: var(--display); font-size: 14px; font-weight: 700; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; }
+.head small { font-family: var(--body); font-weight: 400; font-size: 12px; color: var(--muted); }
+.feat-head { padding: 8px; gap: 6px; justify-content: space-between; }
+.feat-head textarea { min-height: 0; height: 64px; resize: none; font-size: 14px; font-weight: 600; padding: 6px 8px; text-align: center; }
+.feat-head .tag { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: center; }
+.x { font: inherit; font-size: 12px; color: var(--muted); background: none; border: none; cursor: pointer; padding: 2px 4px; border-radius: 4px; }
+.x:hover { color: var(--crit); background: var(--crit-soft); }
+.need { padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+.need .who { font-weight: 700; padding: 5px 8px; }
+.need .what { font-size: 14px; padding: 5px 8px; }
+.need-top { display: flex; gap: 6px; align-items: center; }
+.imp { padding: 10px; display: flex; align-items: center; justify-content: center; }
+.imp select { width: 64px; text-align: center; font-family: var(--mono); font-weight: 600; }
+.rel { display: flex; align-items: stretch; justify-content: stretch; padding: 0; }
+.rel button {
+  width: 100%; border: none; background: transparent; cursor: pointer; color: var(--ink);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  font-family: var(--mono); padding: 12px 4px; min-height: 92px;
+}
+.rel button:hover { background: var(--accent-soft); }
+.rel button .sym { font-size: 26px; line-height: 1; }
+.rel button .num { font-size: 13px; color: var(--muted); }
+.rel button[data-v="0"] .sym { color: var(--line); }
+.rel button[data-v="9"] .sym { color: var(--accent); }
+.served { padding: 10px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; font-size: 13px; }
+.served .pts { font-family: var(--mono); color: var(--muted); }
+.pill { font-family: var(--body); font-size: 12px; font-weight: 700; border-radius: 999px; padding: 3px 10px; letter-spacing: 0.02em; }
+.pill.crit { background: var(--crit-soft); color: var(--crit); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.good { background: var(--good-soft); color: var(--good); }
+.pill.none { background: var(--grid); color: var(--muted); }
+.score-label { background: var(--grid); padding: 12px; font-family: var(--display); font-weight: 700; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.score-label small { font-family: var(--body); font-weight: 400; font-size: 12px; color: var(--muted); }
+.score { background: var(--grid); padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.score .val { font-family: var(--mono); font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.score .bar { width: 100%; height: 8px; background: var(--sheet); border-radius: 4px; overflow: hidden; }
+.score .bar span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+.score .rank { font-size: 12px; color: var(--muted); }
+.score.top .val { color: var(--accent); }
+.add-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.key { display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; align-items: center; font-size: 15px; }
+.key .k { font-family: var(--mono); font-size: 20px; text-align: center; min-width: 40px; }
+.key .k.pos { color: var(--good); }
+.key .k.neg { color: var(--crit); }
+.key .k.acc { color: var(--accent); }
+ol.steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+ul.insights { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+ul.insights li { padding: 10px 14px; border-radius: 8px; background: var(--grid); font-size: 15px; }
+ul.insights li.crit { background: var(--crit-soft); }
+ul.insights li.warn { background: var(--warn-soft); }
+.hint { font-size: 14px; color: var(--muted); }
+.export { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; border-top: 1px solid var(--line); padding-top: 14px; }
+.export .label { font-size: 13px; font-weight: 600; color: var(--muted); margin-right: 4px; }
+.exporting .no-export, .exporting .x, .exporting .banner { display: none !important; }
+.exporting .house-scroll { overflow: visible; }
+.exporting .wrap { max-width: none; width: max-content; min-width: 1180px; }
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+  .no-export, .x, .banner, .add-row, .hint { display: none !important; }
+  .wrap { max-width: none; gap: 12px; }
+  .panel { border-color: #999; break-inside: avoid; padding: 12px; }
+  .house-scroll { overflow: visible; }
+  .two { grid-template-columns: 1fr 1fr; }
+  input[type="text"], textarea, select { border-color: #bbb; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="course-bar no-export" aria-label="Course">
+    <a href="../speculative-design.html">← Back to Speculative Design</a>
+    <span class="crumb">Fall 2026 · Yuan Ze University · <a href="../../classes.html">All classes</a></span>
+  </nav>
+
+  <header class="top">
+    <span class="eyebrow">Speculative Design · Studio worksheet</span>
+    <h1>Speculative House of Quality</h1>
+    <p class="lead">List who lives in your 2045 world and what they need, then score how strongly each feature of your object serves them. The house shows which features the future will build, and who it leaves out.</p>
+  </header>
+
+  <section class="panel" aria-label="Project details">
+    <div class="fields">
+      <div class="field"><label for="f-project">Project title</label><input type="text" id="f-project" placeholder="e.g. The polite restaurant robot"></div>
+      <div class="field"><label for="f-team">Group name or student ID and name</label><input type="text" id="f-team" placeholder="e.g. Group Signal / 112233_Lin"></div>
+      <div class="field"><label for="f-seed">What if…? (your seed)</label><input type="text" id="f-seed" placeholder="What if restaurants served only rated customers by 2045?"></div>
+    </div>
+  </section>
+
+  <div class="banner" id="example-banner" hidden>
+    <p><b>Example loaded:</b> the 2045 restaurant robot. Study it, then clear the house to start your own.</p>
+    <button class="btn primary small" id="btn-clear-banner" type="button">Clear for my project</button>
+  </div>
+
+  <section class="panel" aria-label="House of Quality">
+    <div class="toolbar">
+      <h2 style="flex:1;min-width:200px">The house</h2>
+      <button class="btn small no-export" id="btn-example" type="button">Load example</button>
+      <button class="btn small no-export" id="btn-clear" type="button">Clear for my project</button>
+      <button class="btn small primary no-export" id="btn-copy" type="button">Copy summary</button>
+      <span class="status no-export" id="status" role="status" aria-live="polite"></span>
+    </div>
+    <p class="hint no-export">Click a matrix cell to cycle 0 → 1 → 3 → 9. Shift-click goes back. Click a roof diamond to mark whether two features help or fight each other.</p>
+    <div class="house-scroll"><div class="house" id="house"></div></div>
+    <div class="add-row no-export">
+      <button class="btn small" id="btn-add-need" type="button">+ Add stakeholder</button>
+      <button class="btn small" id="btn-add-feat" type="button">+ Add feature</button>
+    </div>
+    <div class="export no-export">
+      <span class="label">Export</span>
+      <button class="btn small primary" id="btn-png" type="button">Image (PNG)</button>
+      <button class="btn small" id="btn-pdf" type="button">Print / Save as PDF</button>
+      <button class="btn small" id="btn-csv" type="button">Spreadsheet (CSV)</button>
+      <button class="btn small" id="btn-json" type="button">Save my work (.json)</button>
+      <label class="btn small" for="file-open" style="display:inline-flex;align-items:center">Open saved work</label>
+      <input type="file" id="file-open" accept=".json,application/json" hidden>
+      <span class="status" id="export-status" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <div class="two">
+    <section class="panel" aria-label="What the house shows">
+      <h2>What your house shows</h2>
+      <ul class="insights" id="insights"></ul>
+    </section>
+    <section class="panel" aria-label="Your reading">
+      <h2>Your reading</h2>
+      <div class="field"><label for="f-dark">The darkest feature: performance for the powerful, reverse for the vulnerable</label><textarea id="f-dark" placeholder="Which feature will your artifact show, and why?"></textarea></div>
+      <div class="field"><label for="f-prov">Provocation question for the class</label><textarea id="f-prov" placeholder="Is [trade-off] worth [benefit]?"></textarea></div>
+    </section>
+  </div>
+
+  <div class="two">
+    <section class="panel" aria-label="How to fill it in">
+      <h2>How to fill it in</h2>
+      <ol class="steps">
+        <li><b>Rows:</b> write one need for each stakeholder, including someone vulnerable and the AI system itself.</li>
+        <li><b>Importance:</b> score 1–5 the way the 2045 world would, by how much power they hold.</li>
+        <li><b>Columns:</b> name 3–6 features of your object.</li>
+        <li><b>Matrix:</b> how strongly does each feature serve each need?</li>
+        <li><b>Roof:</b> mark features that support or work against each other.</li>
+        <li><b>Read it:</b> who wins, who gets nothing, and which feature carries your provocation?</li>
+      </ol>
+    </section>
+    <section class="panel" aria-label="Key">
+      <h2>Key</h2>
+      <div class="key">
+        <span class="k acc">●</span><span><b>9</b> strong: the feature is built for this need</span>
+        <span class="k">○</span><span><b>3</b> medium</span>
+        <span class="k">△</span><span><b>1</b> weak</span>
+        <span class="k" style="color:var(--line)">·</span><span><b>0</b> none</span>
+        <span class="k pos">++ / +</span><span>Roof: the two features strengthen each other</span>
+        <span class="k neg">−− / −</span><span>Roof: the two features work against each other</span>
+      </div>
+      <p class="hint">Feature score = Σ (importance × relationship). The “Served?” column adds up relationships only, so it shows how much the design does for each person regardless of their power.</p>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function () {
+  var KEY = 'speculative-hoq-v1';
+  var W = 120;
+  var REL_STEPS = [0, 1, 3, 9];
+  var ROOF_STEPS = ['', '+', '++', '-', '--'];
+  var uid = 0;
+  function nid(p) { uid += 1; return p + Date.now().toString(36) + uid; }
+
+  function exampleState() {
+    return {
+      isExample: true,
+      project: 'The polite restaurant robot',
+      team: 'Example',
+      seed: 'What if restaurants only served customers their robots rated well, by 2045?',
+      features: [
+        { id: 'f1', name: 'Customer rating score' },
+        { id: 'f2', name: 'Face scan at the door' },
+        { id: 'f3', name: 'Auto-pay from wallet' }
+      ],
+      needs: [
+        { id: 'n1', who: 'Everyday citizen', need: 'Fast, easy service', imp: 3 },
+        { id: 'n2', who: 'Elderly person, no smartphone', need: 'Can still order a meal', imp: 1 },
+        { id: 'n3', who: 'Restaurant company', need: 'Cut staff costs', imp: 5 },
+        { id: 'n4', who: 'The robot (AI system)', need: 'Avoid “difficult” customers', imp: 4 }
+      ],
+      rel: {
+        'n1|f1': 1, 'n1|f2': 3, 'n1|f3': 9,
+        'n2|f1': 0, 'n2|f2': 0, 'n2|f3': 0,
+        'n3|f1': 9, 'n3|f2': 9, 'n3|f3': 9,
+        'n4|f1': 9, 'n4|f2': 3, 'n4|f3': 1
+      },
+      roof: { 'f1|f2': '+', 'f2|f3': '++' },
+      dark: 'The customer rating score: it scores highest (84) and serves the company and the robot, while the elderly person gets 0 from every feature.',
+      prov: 'Is a faster, cheaper restaurant worth it if some people are never served?'
+    };
+  }
+  function blankState() {
+    return {
+      isExample: false, project: '', team: '', seed: '',
+      features: [{ id: nid('f'), name: '' }, { id: nid('f'), name: '' }, { id: nid('f'), name: '' }],
+      needs: [
+        { id: nid('n'), who: 'Everyday citizen', need: '', imp: 3 },
+        { id: nid('n'), who: 'Vulnerable person', need: '', imp: 1 },
+        { id: nid('n'), who: 'Company or government', need: '', imp: 5 },
+        { id: nid('n'), who: 'The AI system', need: '', imp: 4 }
+      ],
+      rel: {}, roof: {}, dark: '', prov: ''
+    };
+  }
+
+  var state;
+  try { var raw = localStorage.getItem(KEY); state = raw ? JSON.parse(raw) : null; } catch (e) { state = null; }
+  if (!state || !state.features || !state.needs) state = exampleState();
+
+  var saveTimer = null;
+  function save() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    }, 250);
+  }
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function rel(n, f) { return state.rel[n + '|' + f] || 0; }
+  function pairKey(a, b) { return a + '|' + b; }
+  function sym(v) { return v === 9 ? '●' : v === 3 ? '○' : v === 1 ? '△' : '·'; }
+  function relWord(v) { return v === 9 ? 'strong' : v === 3 ? 'medium' : v === 1 ? 'weak' : 'none'; }
+  function roofWord(v) { return v === '++' ? 'strongly support' : v === '+' ? 'support' : v === '-' ? 'work against' : v === '--' ? 'strongly work against' : 'no link'; }
+  function roofShow(v) { return v === '-' ? '−' : v === '--' ? '−−' : v; }
+  function fname(f, i) { return (f.name && f.name.trim()) || ('Feature ' + String.fromCharCode(65 + i)); }
+  function nname(n, i) { return (n.who && n.who.trim()) || ('Stakeholder ' + (i + 1)); }
+
+  var house = document.getElementById('house');
+
+  function buildRoof() {
+    var n = state.features.length;
+    var H = n * W / 2;
+    var widthPx = n * W;
+    var parts = ['<svg width="' + widthPx + '" height="' + H + '" viewBox="0 0 ' + widthPx + ' ' + H + '" role="group" aria-label="Roof: correlations between features">'];
+    parts.push('<polygon class="outline" points="0,' + H + ' ' + widthPx + ',' + H + ' ' + (widthPx / 2) + ',0"/>');
+    for (var i = 0; i < n; i++) {
+      for (var j = i + 1; j < n; j++) {
+        var cx = ((i + j) / 2 + 0.5) * W;
+        var cy = H - (j - i) * W / 2;
+        var k = pairKey(state.features[i].id, state.features[j].id);
+        var v = state.roof[k] || '';
+        var cls = v.indexOf('-') === 0 ? 'neg' : v ? 'pos' : '';
+        var label = fname(state.features[i], i) + ' and ' + fname(state.features[j], j) + ': ' + roofWord(v) + '. Press to change.';
+        parts.push('<g class="pair ' + cls + '" tabindex="0" role="button" data-pair="' + k + '" aria-label="' + esc(label) + '">' +
+          '<polygon points="' + cx + ',' + (cy - W / 2) + ' ' + (cx + W / 2) + ',' + cy + ' ' + cx + ',' + (cy + W / 2) + ' ' + (cx - W / 2) + ',' + cy + '"/>' +
+          '<text x="' + cx + '" y="' + (cy + 6) + '">' + esc(roofShow(v)) + '</text></g>');
+      }
+    }
+    parts.push('</svg>');
+    return parts.join('');
+  }
+
+  function render() {
+    var n = state.features.length;
+    house.style.gridTemplateColumns = 'var(--need-w) var(--imp-w) repeat(' + n + ', var(--fw)) var(--served-w)';
+    var h = [];
+    // roof row
+    h.push('<div class="cell blank roof-label" style="grid-column: span 2"><b style="color:var(--ink)">Roof</b><span>Do two features help or fight each other? Click a diamond.</span></div>');
+    h.push('<div class="cell blank roof-wrap" style="grid-column: span ' + n + '">' + (n > 1 ? buildRoof() : '') + '</div>');
+    h.push('<div class="cell blank"></div>');
+    // header row
+    h.push('<div class="cell head hrow-first hcol-first">Needs (WHAT)<small>Who, and what they need</small></div>');
+    h.push('<div class="cell head hrow-first">Importance<small>1–5, by power</small></div>');
+    state.features.forEach(function (f, i) {
+      h.push('<div class="cell head feat-head hrow-first">' +
+        '<span class="tag">HOW ' + String.fromCharCode(65 + i) + (n > 2 ? ' <button class="x" type="button" data-del-feat="' + f.id + '" aria-label="Remove feature ' + String.fromCharCode(65 + i) + '">✕</button>' : '') + '</span>' +
+        '<textarea id="feat-' + f.id + '" data-feat="' + f.id + '" placeholder="Feature name" aria-label="Feature ' + String.fromCharCode(65 + i) + ' name">' + esc(f.name) + '</textarea></div>');
+    });
+    h.push('<div class="cell head hrow-first">Served?<small>Sum of relationships</small></div>');
+    // need rows
+    state.needs.forEach(function (nd, r) {
+      h.push('<div class="cell need hcol-first"><div class="need-top">' +
+        '<input type="text" class="who" id="who-' + nd.id + '" data-who="' + nd.id + '" value="' + esc(nd.who) + '" placeholder="Stakeholder" aria-label="Stakeholder ' + (r + 1) + '">' +
+        (state.needs.length > 2 ? '<button class="x" type="button" data-del-need="' + nd.id + '" aria-label="Remove stakeholder ' + (r + 1) + '">✕</button>' : '') +
+        '</div><input type="text" class="what" id="need-' + nd.id + '" data-need="' + nd.id + '" value="' + esc(nd.need) + '" placeholder="needs to…" aria-label="Need of stakeholder ' + (r + 1) + '"></div>');
+      var opts = '';
+      for (var s = 1; s <= 5; s++) opts += '<option value="' + s + '"' + (nd.imp === s ? ' selected' : '') + '>' + s + '</option>';
+      h.push('<div class="cell imp"><select id="imp-' + nd.id + '" data-imp="' + nd.id + '" aria-label="Importance for stakeholder ' + (r + 1) + '">' + opts + '</select></div>');
+      state.features.forEach(function (f) {
+        var v = rel(nd.id, f.id);
+        h.push('<div class="cell rel"><button type="button" data-rel="' + nd.id + '|' + f.id + '" data-v="' + v + '"><span class="sym">' + sym(v) + '</span><span class="num">' + v + '</span></button></div>');
+      });
+      h.push('<div class="cell served" id="served-' + nd.id + '"></div>');
+    });
+    // score row
+    h.push('<div class="cell score-label hcol-first" style="grid-column: span 2">Feature score<small>Σ importance × relationship</small></div>');
+    state.features.forEach(function (f) { h.push('<div class="cell score" id="score-' + f.id + '"></div>'); });
+    h.push('<div class="cell blank"></div>');
+    house.innerHTML = h.join('');
+    document.getElementById('btn-add-feat').disabled = n >= 6;
+    document.getElementById('btn-add-need').disabled = state.needs.length >= 7;
+    updateRelLabels();
+    compute();
+  }
+
+  function updateRelLabels() {
+    house.querySelectorAll('button[data-rel]').forEach(function (b) {
+      var parts = b.getAttribute('data-rel').split('|');
+      var ni = state.needs.findIndex(function (x) { return x.id === parts[0]; });
+      var fi = state.features.findIndex(function (x) { return x.id === parts[1]; });
+      var v = Number(b.getAttribute('data-v'));
+      b.setAttribute('aria-label', fname(state.features[fi], fi) + ' for ' + nname(state.needs[ni], ni) + ': ' + v + ', ' + relWord(v) + '. Press to change.');
+    });
+  }
+
+  function compute() {
+    var scores = state.features.map(function (f) {
+      return state.needs.reduce(function (sum, nd) { return sum + nd.imp * rel(nd.id, f.id); }, 0);
+    });
+    var max = Math.max.apply(null, scores.concat([0]));
+    var order = scores.map(function (s, i) { return { s: s, i: i }; }).sort(function (a, b) { return b.s - a.s; });
+    state.features.forEach(function (f, i) {
+      var el = document.getElementById('score-' + f.id);
+      if (!el) return;
+      var rank = order.findIndex(function (o) { return o.i === i; }) + 1;
+      var pct = max ? Math.round(scores[i] / max * 100) : 0;
+      el.className = 'cell score' + (max && scores[i] === max ? ' top' : '');
+      el.innerHTML = '<span class="val">' + scores[i] + '</span><span class="bar"><span style="width:' + pct + '%"></span></span><span class="rank">' + (max ? 'Rank ' + rank : '—') + '</span>';
+    });
+    var served = state.needs.map(function (nd) {
+      return state.features.reduce(function (sum, f) { return sum + rel(nd.id, f.id); }, 0);
+    });
+    var smax = Math.max.apply(null, served.concat([0]));
+    state.needs.forEach(function (nd, r) {
+      var el = document.getElementById('served-' + nd.id);
+      if (!el) return;
+      var v = served[r], pill;
+      if (!smax) pill = '<span class="pill none">Not scored</span>';
+      else if (v === 0) pill = '<span class="pill crit">Left out</span>';
+      else if (v < smax / 3) pill = '<span class="pill warn">Underserved</span>';
+      else pill = '<span class="pill good">Served</span>';
+      el.innerHTML = pill + '<span class="pts">' + v + ' pts</span>';
+    });
+    renderInsights(scores, served);
+  }
+
+  function renderInsights(scores, served) {
+    var out = [];
+    var max = Math.max.apply(null, scores.concat([0]));
+    if (!max) {
+      out.push({ t: 'Fill the matrix to see which feature the future will build first.' });
+    } else {
+      var ti = scores.indexOf(max);
+      out.push({ t: '<b>Built first:</b> “' + esc(fname(state.features[ti], ti)) + '” has the highest score (' + max + ').' });
+      var smax = Math.max.apply(null, served);
+      var bi = served.indexOf(smax);
+      out.push({ t: '<b>Best served:</b> ' + esc(nname(state.needs[bi], bi)) + ' (' + smax + ' pts).' });
+      var left = state.needs.filter(function (nd, i) { return served[i] === 0; });
+      if (left.length) {
+        out.push({ c: 'crit', t: '<b>Left out:</b> ' + left.map(function (nd) { return esc(nname(nd, state.needs.indexOf(nd))); }).join(', ') + ' ' + (left.length > 1 ? 'get' : 'gets') + ' nothing from any feature.' });
+      } else {
+        var smin = Math.min.apply(null, served);
+        var wi = served.indexOf(smin);
+        out.push({ c: 'warn', t: '<b>Least served:</b> ' + esc(nname(state.needs[wi], wi)) + ' (' + smin + ' pts).' });
+      }
+    }
+    var conflicts = [];
+    for (var i = 0; i < state.features.length; i++) {
+      for (var j = i + 1; j < state.features.length; j++) {
+        var v = state.roof[pairKey(state.features[i].id, state.features[j].id)] || '';
+        if (v.indexOf('-') === 0) conflicts.push('“' + esc(fname(state.features[i], i)) + '” works against “' + esc(fname(state.features[j], j)) + '”');
+      }
+    }
+    out.push(conflicts.length ? { c: 'warn', t: '<b>Built-in conflict:</b> ' + conflicts.join('; ') + '.' } : { t: '<b>Roof:</b> no conflicts marked yet. Are any two features really in harmony for everyone?' });
+    document.getElementById('insights').innerHTML = out.map(function (o) { return '<li' + (o.c ? ' class="' + o.c + '"' : '') + '>' + o.t + '</li>'; }).join('');
+  }
+
+  function setBanner() { document.getElementById('example-banner').hidden = !state.isExample; }
+  function fillFields() {
+    document.getElementById('f-project').value = state.project || '';
+    document.getElementById('f-team').value = state.team || '';
+    document.getElementById('f-seed').value = state.seed || '';
+    document.getElementById('f-dark').value = state.dark || '';
+    document.getElementById('f-prov').value = state.prov || '';
+  }
+  function markEdited() { if (state.isExample) { state.isExample = false; setBanner(); } }
+
+  // events
+  house.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-rel]');
+    if (b) {
+      var k = b.getAttribute('data-rel');
+      var cur = REL_STEPS.indexOf(state.rel[k] || 0);
+      var next = REL_STEPS[(cur + (e.shiftKey ? REL_STEPS.length - 1 : 1)) % REL_STEPS.length];
+      state.rel[k] = next;
+      b.setAttribute('data-v', next);
+      b.querySelector('.sym').textContent = sym(next);
+      b.querySelector('.num').textContent = next;
+      markEdited(); updateRelLabels(); compute(); save();
+      return;
+    }
+    var g = e.target.closest('g.pair');
+    if (g) { cycleRoof(g.getAttribute('data-pair'), e.shiftKey); return; }
+    var df = e.target.closest('[data-del-feat]');
+    if (df) {
+      var fid = df.getAttribute('data-del-feat');
+      state.features = state.features.filter(function (f) { return f.id !== fid; });
+      Object.keys(state.rel).forEach(function (k) { if (k.split('|')[1] === fid) delete state.rel[k]; });
+      Object.keys(state.roof).forEach(function (k) { if (k.split('|').indexOf(fid) > -1) delete state.roof[k]; });
+      markEdited(); render(); save(); return;
+    }
+    var dn = e.target.closest('[data-del-need]');
+    if (dn) {
+      var nid2 = dn.getAttribute('data-del-need');
+      state.needs = state.needs.filter(function (x) { return x.id !== nid2; });
+      Object.keys(state.rel).forEach(function (k) { if (k.split('|')[0] === nid2) delete state.rel[k]; });
+      markEdited(); render(); save();
+    }
+  });
+  house.addEventListener('keydown', function (e) {
+    var g = e.target.closest && e.target.closest('g.pair');
+    if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); cycleRoof(g.getAttribute('data-pair'), e.shiftKey); }
+  });
+  function cycleRoof(k, back) {
+    var cur = ROOF_STEPS.indexOf(state.roof[k] || '');
+    state.roof[k] = ROOF_STEPS[(cur + (back ? ROOF_STEPS.length - 1 : 1)) % ROOF_STEPS.length];
+    markEdited();
+    var wrap = house.querySelector('.roof-wrap');
+    wrap.innerHTML = buildRoof();
+    var again = wrap.querySelector('g.pair[data-pair="' + k + '"]');
+    if (again) again.focus();
+    compute(); save();
+  }
+  house.addEventListener('input', function (e) {
+    var t = e.target;
+    if (t.dataset.feat) { var f = state.features.find(function (x) { return x.id === t.dataset.feat; }); if (f) f.name = t.value; }
+    else if (t.dataset.who) { var a = state.needs.find(function (x) { return x.id === t.dataset.who; }); if (a) a.who = t.value; }
+    else if (t.dataset.need) { var b = state.needs.find(function (x) { return x.id === t.dataset.need; }); if (b) b.need = t.value; }
+    else return;
+    markEdited(); updateRelLabels(); compute(); save();
+  });
+  house.addEventListener('change', function (e) {
+    var t = e.target;
+    if (t.dataset.imp) {
+      var nd = state.needs.find(function (x) { return x.id === t.dataset.imp; });
+      if (nd) nd.imp = Number(t.value);
+      markEdited(); compute(); save();
+    }
+  });
+  [['f-project', 'project'], ['f-team', 'team'], ['f-seed', 'seed'], ['f-dark', 'dark'], ['f-prov', 'prov']].forEach(function (p) {
+    document.getElementById(p[0]).addEventListener('input', function (e) { state[p[1]] = e.target.value; markEdited(); save(); });
+  });
+  document.getElementById('btn-add-feat').addEventListener('click', function () {
+    if (state.features.length >= 6) return;
+    state.features.push({ id: nid('f'), name: '' }); markEdited(); render(); save();
+  });
+  document.getElementById('btn-add-need').addEventListener('click', function () {
+    if (state.needs.length >= 7) return;
+    state.needs.push({ id: nid('n'), who: '', need: '', imp: 3 }); markEdited(); render(); save();
+  });
+
+  var pendingClear = false;
+  function clearHouse(btn) {
+    if (!state.isExample && !pendingClear) {
+      pendingClear = true;
+      btn.textContent = 'Click again to erase';
+      setTimeout(function () { pendingClear = false; btn.textContent = 'Clear for my project'; }, 3000);
+      return;
+    }
+    pendingClear = false;
+    btn.textContent = 'Clear for my project';
+    state = blankState(); fillFields(); setBanner(); render(); save();
+    flash('Cleared. Start with your stakeholders.');
+  }
+  document.getElementById('btn-clear').addEventListener('click', function (e) { clearHouse(e.currentTarget); });
+  document.getElementById('btn-clear-banner').addEventListener('click', function (e) { clearHouse(e.currentTarget); });
+  var pendingExample = false;
+  document.getElementById('btn-example').addEventListener('click', function (e) {
+    var btn = e.currentTarget;
+    if (!state.isExample && !pendingExample) {
+      pendingExample = true; btn.textContent = 'Replace my work? Click again';
+      setTimeout(function () { pendingExample = false; btn.textContent = 'Load example'; }, 3000);
+      return;
+    }
+    pendingExample = false; btn.textContent = 'Load example';
+    state = exampleState(); fillFields(); setBanner(); render(); save();
+  });
+
+  function summary() {
+    var scores = state.features.map(function (f) { return state.needs.reduce(function (s, nd) { return s + nd.imp * rel(nd.id, f.id); }, 0); });
+    var lines = [];
+    lines.push('SPECULATIVE HOUSE OF QUALITY');
+    lines.push('Project: ' + (state.project || '—'));
+    lines.push('By: ' + (state.team || '—'));
+    lines.push('What if: ' + (state.seed || '—'));
+    lines.push('');
+    lines.push('Features: ' + state.features.map(function (f, i) { return String.fromCharCode(65 + i) + ' = ' + fname(f, i); }).join(' | '));
+    lines.push('');
+    lines.push(['Stakeholder: need', 'Imp'].concat(state.features.map(function (f, i) { return String.fromCharCode(65 + i); })).concat(['Served']).join('\t'));
+    state.needs.forEach(function (nd, r) {
+      var row = [nname(nd, r) + ': ' + (nd.need || '—'), nd.imp];
+      var tot = 0;
+      state.features.forEach(function (f) { var v = rel(nd.id, f.id); tot += v; row.push(v); });
+      row.push(tot);
+      lines.push(row.join('\t'));
+    });
+    lines.push(['Feature score', ''].concat(scores).join('\t'));
+    var roofLines = [];
+    for (var i = 0; i < state.features.length; i++) for (var j = i + 1; j < state.features.length; j++) {
+      var v = state.roof[pairKey(state.features[i].id, state.features[j].id)];
+      if (v) roofLines.push(String.fromCharCode(65 + i) + ' & ' + String.fromCharCode(65 + j) + ': ' + roofWord(v));
+    }
+    lines.push('');
+    lines.push('Roof: ' + (roofLines.length ? roofLines.join('; ') : 'none marked'));
+    lines.push('');
+    lines.push('Darkest feature: ' + (state.dark || '—'));
+    lines.push('Provocation: ' + (state.prov || '—'));
+    return lines.join('\n');
+  }
+  function flash(msg) {
+    var s = document.getElementById('status'); s.textContent = msg;
+    clearTimeout(flash.t); flash.t = setTimeout(function () { s.textContent = ''; }, 3500);
+  }
+  document.getElementById('btn-copy').addEventListener('click', function () {
+    var text = summary();
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      flash(ok ? 'Summary copied. Paste it into your report.' : 'Copy was blocked. Take a screenshot of the house instead.');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { flash('Summary copied. Paste it into your report.'); }, fallback);
+    } else fallback();
+  });
+
+  // ---------- export ----------
+  function slug() {
+    var base = (state.project || 'house-of-quality').toLowerCase().replace(/[^a-z0-9一-鿿]+/g, '-').replace(/^-+|-+$/g, '');
+    return (base || 'house-of-quality').slice(0, 60);
+  }
+  function xflash(msg) {
+    var s = document.getElementById('export-status'); s.textContent = msg;
+    clearTimeout(xflash.t); xflash.t = setTimeout(function () { s.textContent = ''; }, 4000);
+  }
+  function download(blob, name) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+  function csvCell(v) { v = String(v == null ? '' : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+  document.getElementById('btn-csv').addEventListener('click', function () {
+    var rows = [];
+    rows.push(['Project', state.project || '']);
+    rows.push(['By', state.team || '']);
+    rows.push(['What if', state.seed || '']);
+    rows.push([]);
+    rows.push(['Stakeholder', 'Need', 'Importance'].concat(state.features.map(function (f, i) { return fname(f, i); })).concat(['Served (pts)']));
+    state.needs.forEach(function (nd, r) {
+      var tot = 0, row = [nname(nd, r), nd.need || '', nd.imp];
+      state.features.forEach(function (f) { var v = rel(nd.id, f.id); tot += v; row.push(v); });
+      row.push(tot); rows.push(row);
+    });
+    rows.push(['Feature score', '', ''].concat(state.features.map(function (f) {
+      return state.needs.reduce(function (s, nd) { return s + nd.imp * rel(nd.id, f.id); }, 0);
+    })));
+    rows.push([]);
+    rows.push(['Roof: feature', 'Roof: feature', 'Relationship']);
+    for (var i = 0; i < state.features.length; i++) for (var j = i + 1; j < state.features.length; j++) {
+      var v = state.roof[pairKey(state.features[i].id, state.features[j].id)];
+      if (v) rows.push([fname(state.features[i], i), fname(state.features[j], j), roofWord(v)]);
+    }
+    rows.push([]);
+    rows.push(['Darkest feature', state.dark || '']);
+    rows.push(['Provocation', state.prov || '']);
+    var csv = '﻿' + rows.map(function (r) { return r.map(csvCell).join(','); }).join('\r\n');
+    download(new Blob([csv], { type: 'text/csv;charset=utf-8' }), slug() + '.csv');
+    xflash('CSV downloaded. It opens in Excel or Google Sheets.');
+  });
+  document.getElementById('btn-json').addEventListener('click', function () {
+    var data = JSON.parse(JSON.stringify(state)); data.format = 'speculative-hoq'; data.version = 1;
+    download(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }), slug() + '.json');
+    xflash('Saved. Use “Open saved work” to continue later, on any device.');
+  });
+  document.getElementById('file-open').addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0]; if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var d = JSON.parse(reader.result);
+        if (!d || !Array.isArray(d.features) || !Array.isArray(d.needs)) throw new Error('bad');
+        state = {
+          isExample: false, project: d.project || '', team: d.team || '', seed: d.seed || '',
+          features: d.features.slice(0, 6).map(function (f) { return { id: String(f.id), name: String(f.name || '') }; }),
+          needs: d.needs.slice(0, 7).map(function (n) { return { id: String(n.id), who: String(n.who || ''), need: String(n.need || ''), imp: Math.min(5, Math.max(1, Number(n.imp) || 3)) }; }),
+          rel: {}, roof: {}, dark: d.dark || '', prov: d.prov || ''
+        };
+        Object.keys(d.rel || {}).forEach(function (k) { var v = Number(d.rel[k]); if (REL_STEPS.indexOf(v) > -1) state.rel[k] = v; });
+        Object.keys(d.roof || {}).forEach(function (k) { if (ROOF_STEPS.indexOf(d.roof[k]) > -1) state.roof[k] = d.roof[k]; });
+        fillFields(); setBanner(); render(); save();
+        xflash('Opened “' + (state.project || file.name) + '”.');
+      } catch (err) { xflash('That file is not a saved House of Quality. Choose a .json file saved from this page.'); }
+      e.target.value = '';
+    };
+    reader.readAsText(file);
+  });
+  document.getElementById('btn-pdf').addEventListener('click', function () { window.print(); });
+  document.getElementById('btn-png').addEventListener('click', function () {
+    if (typeof html2canvas !== 'function') { xflash('The image tool could not load. Check your internet connection, or use Print / Save as PDF.'); return; }
+    var btn = this; btn.disabled = true; xflash('Making the image…');
+    document.documentElement.classList.add('exporting');
+    var target = document.querySelector('.wrap');
+    var bg = getComputedStyle(document.body).backgroundColor;
+    html2canvas(target, { backgroundColor: bg, scale: 2, useCORS: true, windowWidth: Math.max(target.scrollWidth + 64, 1280) }).then(function (canvas) {
+      document.documentElement.classList.remove('exporting');
+      canvas.toBlob(function (blob) {
+        btn.disabled = false;
+        if (!blob) { xflash('The image could not be made. Try Print / Save as PDF.'); return; }
+        download(blob, slug() + '.png'); xflash('Image downloaded.');
+      }, 'image/png');
+    }).catch(function () {
+      document.documentElement.classList.remove('exporting'); btn.disabled = false;
+      xflash('The image could not be made. Try Print / Save as PDF.');
+    });
+  });
+
+  fillFields(); setBanner(); render();
+})();
+</script>
+
+</body>
+</html>
