@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Speculative Kano Analysis — Speculative Design, Yuan Ze University</title>
+<meta name="description" content="Studio worksheet for the Speculative Design course: ask stakeholders how they feel about each feature of your 2045 object, and see which features are must-be, attractive, or reverse for different people.">
+<link href="../../assets/img/page0.png" rel="icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one drafting sheet in four numbered steps (features, people, answers, results), same look as the House of Quality worksheet. */
+:root {
+  --paper: #EEF1F0; --sheet: #FBFCFB; --ink: #17212B; --muted: #55626D; --line: #C3CCCF; --grid: #E2E7E7;
+  --accent: #1F6F8B; --accent-soft: #DCECF1;
+  --cat-m: #17212B; --cat-p: #2F6FB0; --cat-a: #C2531F; --cat-i: #7D8A94; --cat-r: #7B4F96; --cat-q: #A7B0B6;
+  --zone-m: #E4E7EA; --zone-p: #DDE8F4; --zone-a: #F8E3D8; --zone-i: #EEF0F1; --zone-r: #ECE2F2; --zone-q: #F6F7F7;
+  --crit: #B4370F; --crit-soft: #FBE3DA; --warn: #855600; --warn-soft: #F7ECD0; --good: #2C6837; --good-soft: #DEEFE1;
+  --display: 'Archivo', 'Arial Narrow', Arial, sans-serif;
+  --body: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10171C; --sheet: #172129; --ink: #E6ECEE; --muted: #9DABB4; --line: #34434E; --grid: #233039;
+    --accent: #6FB9D4; --accent-soft: #1C3540;
+    --cat-m: #E6ECEE; --cat-p: #7FB2E8; --cat-a: #F0935F; --cat-i: #8F9DA7; --cat-r: #C49BDC; --cat-q: #5D6A73;
+    --zone-m: #222D35; --zone-p: #1B2C3D; --zone-a: #3A2519; --zone-i: #1C262D; --zone-r: #2C2236; --zone-q: #151D23;
+    --crit: #F28B67; --crit-soft: #3B2219; --warn: #E4B65B; --warn-soft: #352B16; --good: #7FC68D; --good-soft: #1B3321; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10171C; --sheet: #172129; --ink: #E6ECEE; --muted: #9DABB4; --line: #34434E; --grid: #233039;
+  --accent: #6FB9D4; --accent-soft: #1C3540;
+  --cat-m: #E6ECEE; --cat-p: #7FB2E8; --cat-a: #F0935F; --cat-i: #8F9DA7; --cat-r: #C49BDC; --cat-q: #5D6A73;
+  --zone-m: #222D35; --zone-p: #1B2C3D; --zone-a: #3A2519; --zone-i: #1C262D; --zone-r: #2C2236; --zone-q: #151D23;
+  --crit: #F28B67; --crit-soft: #3B2219; --warn: #E4B65B; --warn-soft: #352B16; --good: #7FC68D; --good-soft: #1B3321; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 32px 56px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.course-bar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; font-size: 14px; }
+.course-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.course-bar a:hover { text-decoration: underline; }
+.course-bar .crumb { color: var(--muted); }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; }
+h2 { font-size: 22px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.lead { color: var(--muted); max-width: 70ch; }
+header.top { display: flex; flex-direction: column; gap: 8px; }
+.panel { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.panel-head { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: baseline; justify-content: space-between; }
+.step { font-family: var(--mono); font-size: 13px; color: var(--accent); margin-right: 8px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field label, .lbl { font-size: 13px; font-weight: 600; color: var(--muted); }
+input[type="text"], textarea, select { font: inherit; color: var(--ink); background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px; width: 100%; }
+textarea { resize: vertical; min-height: 64px; }
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible, label.btn:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn { font: inherit; font-weight: 600; font-size: 15px; border-radius: 6px; padding: 8px 14px; cursor: pointer; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); }
+.btn:hover { border-color: var(--accent); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--sheet); }
+.btn.small { font-size: 13px; padding: 5px 10px; }
+.x { font: inherit; font-size: 12px; color: var(--muted); background: none; border: none; cursor: pointer; padding: 4px 6px; border-radius: 4px; }
+.x:hover { color: var(--crit); background: var(--crit-soft); }
+.row-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.status { font-size: 14px; color: var(--muted); }
+.hint { font-size: 14px; color: var(--muted); }
+.banner { background: var(--accent-soft); border-radius: 8px; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.banner p { font-size: 15px; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--muted); background: var(--grid); white-space: nowrap; }
+td.num, th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td.code { font-family: var(--mono); font-weight: 600; color: var(--accent); white-space: nowrap; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 13px; border-radius: 999px; padding: 2px 10px 2px 4px; white-space: nowrap; background: var(--grid); }
+.chip b { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; font-family: var(--mono); font-size: 12px; color: var(--sheet); }
+.chip.M b { background: var(--cat-m); } .chip.P b { background: var(--cat-p); } .chip.A b { background: var(--cat-a); }
+.chip.I b { background: var(--cat-i); } .chip.R b { background: var(--cat-r); } .chip.Q b { background: var(--cat-q); }
+.chip.none { color: var(--muted); padding: 2px 10px; }
+.dist { display: flex; height: 12px; width: 140px; border-radius: 3px; overflow: hidden; background: var(--grid); }
+.dist span { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 14px; }
+.people-list, .feat-list { display: flex; flex-direction: column; gap: 8px; }
+.feat-row, .person-row { display: grid; gap: 8px; align-items: center; }
+.feat-row { grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.4fr) auto; }
+.person-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto; }
+.feat-row .code { font-family: var(--mono); font-weight: 600; color: var(--accent); }
+.seg-list { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: inline-flex; align-items: center; gap: 2px; background: var(--grid); border-radius: 999px; padding: 2px 4px 2px 12px; font-size: 14px; font-weight: 600; }
+.seg input { border: none; background: transparent; padding: 2px 4px; width: auto; min-width: 60px; font-weight: 600; }
+.answer-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.answer-bar select { width: auto; min-width: 220px; }
+.progress { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.ans td select { min-width: 150px; }
+.ans td.imp select { min-width: 70px; width: 76px; }
+.ans .qtext { font-size: 13px; color: var(--muted); }
+.results-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.chart-box { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+.chart-box svg text { font-family: var(--mono); fill: var(--ink); }
+.chart-box svg .zone-label { font-family: var(--display); font-weight: 700; font-size: 15px; }
+.chart-box svg .axis-label { font-family: var(--body); font-size: 13px; fill: var(--muted); }
+.chart-box svg .tick { font-size: 11px; fill: var(--muted); }
+.sub-head { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 16px; }
+.chart-box svg .bar-label { font-size: 11px; font-weight: 600; }
+.flag { font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 10px; background: var(--crit-soft); color: var(--crit); white-space: nowrap; }
+ul.insights { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+ul.insights li { padding: 10px 14px; border-radius: 8px; background: var(--grid); font-size: 15px; }
+ul.insights li.crit { background: var(--crit-soft); }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.export { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.export .lbl { margin-right: 4px; }
+.rules td, .rules th { text-align: center; font-size: 14px; }
+.rules th:first-child, .rules td:first-child { text-align: left; }
+.scorecol { font-family: var(--mono); color: var(--muted); }
+details summary { cursor: pointer; font-weight: 600; }
+@media (max-width: 860px) { .results-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .feat-row { grid-template-columns: 36px minmax(0, 1fr) auto; }
+  .feat-row .desc { grid-column: 2 / 4; }
+  .person-row { grid-template-columns: minmax(0, 1fr) auto; }
+}
+.exporting .no-export, .exporting .x, .exporting .banner { display: none !important; }
+.exporting .tbl-scroll { overflow: visible; }
+.exporting .wrap { max-width: none; width: 1180px; }
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+  .no-export, .x, .banner { display: none !important; }
+  .panel { border-color: #999; break-inside: avoid; padding: 12px; }
+  .tbl-scroll { overflow: visible; }
+  .print-skip { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="course-bar no-export" aria-label="Course">
+    <a href="../speculative-design.html">← Back to Speculative Design</a>
+    <span class="crumb">Fall 2026 · Yuan Ze University · <a href="../../classes.html">All classes</a></span>
+  </nav>
+
+  <header class="top">
+    <span class="eyebrow">Speculative Design · Studio worksheet</span>
+    <h1>Speculative Kano Analysis</h1>
+    <p class="lead">Ask each stakeholder two questions about every feature of your 2045 object: how they feel if it is there, and how they feel if it is not. The analysis sorts each feature into Must-be, Performance, Attractive, Indifferent or Reverse, for everyone and for each stakeholder group.</p>
+  </header>
+
+  <section class="panel" aria-label="Project details">
+    <div class="fields">
+      <div class="field"><label for="f-project">Project title</label><input type="text" id="f-project" placeholder="e.g. The polite restaurant robot"></div>
+      <div class="field"><label for="f-team">Group name or student ID and name</label><input type="text" id="f-team" placeholder="e.g. Group Signal / 112233_Lin"></div>
+      <div class="field"><label for="f-seed">What if…? (your seed)</label><input type="text" id="f-seed" placeholder="What if restaurants served only rated customers by 2045?"></div>
+    </div>
+  </section>
+
+  <div class="banner" id="example-banner" hidden>
+    <p><b>Example loaded:</b> the 2045 restaurant robot, with 8 classmates playing 4 stakeholder roles. Study it, then clear it to start your own.</p>
+    <button class="btn primary small" id="btn-clear-banner" type="button">Clear for my project</button>
+  </div>
+
+  <section class="panel print-skip" aria-labelledby="h-features">
+    <div class="panel-head"><h2 id="h-features"><span class="step">1</span>Features</h2><span class="hint">Up to 12. Write each as a benefit the person would notice.</span></div>
+    <div class="feat-list" id="feat-list"></div>
+    <div class="row-actions no-export"><button class="btn small" id="btn-add-feat" type="button">+ Add feature</button></div>
+  </section>
+
+  <section class="panel print-skip" aria-labelledby="h-people">
+    <div class="panel-head"><h2 id="h-people"><span class="step">2</span>Stakeholder groups and respondents</h2><span class="hint">Classmates answer as their role card, not as themselves.</span></div>
+    <div class="field">
+      <span class="lbl">Stakeholder groups (segments)</span>
+      <div class="seg-list" id="seg-list"></div>
+    </div>
+    <div class="people-list" id="people-list"></div>
+    <div class="row-actions no-export">
+      <button class="btn small" id="btn-add-seg" type="button">+ Add group</button>
+      <button class="btn small" id="btn-add-person" type="button">+ Add respondent</button>
+    </div>
+  </section>
+
+  <section class="panel print-skip" aria-labelledby="h-answers">
+    <div class="panel-head"><h2 id="h-answers"><span class="step">3</span>Answers</h2><span class="progress" id="progress"></span></div>
+    <div class="answer-bar no-export">
+      <label class="lbl" for="sel-person">Respondent</label>
+      <select id="sel-person"></select>
+      <button class="btn small" id="btn-prev" type="button">← Previous</button>
+      <button class="btn small" id="btn-next" type="button">Next →</button>
+    </div>
+    <p class="hint">Functional: “How do you feel if the object <b>has</b> this feature?” Dysfunctional: “How do you feel if it does <b>not</b> have it?” Importance: 1 (not important) to 10 (very important).</p>
+    <div class="tbl-scroll"><table class="ans" id="ans-table"></table></div>
+    <details class="no-export">
+      <summary>Bring in answers from a spreadsheet (CSV)</summary>
+      <div style="display:flex;flex-direction:column;gap:10px;padding-top:10px">
+        <p class="hint">Use the same columns as the Responses sheet of the Kano workbook: <b>Feature, User, Functional, Dysfunctional, Self-stated Importance</b>, and optionally <b>Segment</b>. Features are matched by code (F1, F2…) or name; new respondents are added. In Excel, choose File › Save As › CSV UTF-8.</p>
+        <p class="hint"><b>Not sure how to start?</b> Download the template. It has one row for every feature and respondent you have set up in steps 1 and 2, with features listed by code (F1, F2…). Fill in the Functional and Dysfunctional columns with one of: <b>I like it, I expect it, I am neutral, I can tolerate it, I dislike it</b>. Importance is a number from 1 to 10. Add more rows for more respondents, and leave out rows nobody answered.</p>
+        <div class="row-actions">
+          <button class="btn small" id="btn-csv-template" type="button">Download template (CSV)</button>
+          <label class="btn small" for="file-csv" style="display:inline-flex;align-items:center">Choose CSV file</label>
+          <input type="file" id="file-csv" accept=".csv,text/csv" hidden>
+          <span class="status" id="import-status" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="panel" aria-labelledby="h-results">
+    <div class="panel-head">
+      <h2 id="h-results"><span class="step">4</span>Results</h2>
+      <div class="row-actions"><label class="lbl" for="sel-filter">Show</label><select id="sel-filter" style="width:auto;min-width:200px"></select></div>
+    </div>
+    <div class="legend" id="legend"></div>
+
+    <div class="sub-head">
+      <h3><span class="step">4a</span>Continuous analysis</h3>
+      <span class="hint">Averages the answer scores, so strong and mild feelings both count</span>
+    </div>
+    <div class="results-grid">
+      <div class="tbl-scroll"><table id="res-table"></table></div>
+      <div class="chart-box">
+        <h3 id="chart-title">Kano map</h3>
+        <div id="chart"></div>
+        <p class="hint">Each bubble is a feature, placed by average dysfunctional (X) and functional (Y) score. Bigger bubbles mean higher self-stated importance. Questionable answers are left out of the averages.</p>
+      </div>
+    </div>
+
+    <div class="sub-head">
+      <h3><span class="step">4b</span>Discrete analysis</h3>
+      <span class="hint">Sorts every answer pair with the Kano table, then counts the categories</span>
+    </div>
+    <div class="results-grid">
+      <div class="tbl-scroll"><table id="disc-table"></table></div>
+      <div class="chart-box">
+        <h3 id="disc-title">Answer mix</h3>
+        <div id="disc-chart"></div>
+        <p class="hint">Each bar is a feature, split by the share of respondents in each category. The outlined part is the most common category. When the two analyses disagree, people are split on that feature.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-compare">
+    <div class="panel-head"><h2 id="h-compare">Same feature, different people</h2><span class="hint">Continuous category per stakeholder group</span></div>
+    <div class="tbl-scroll"><table id="cmp-table"></table></div>
+    <ul class="insights" id="insights"></ul>
+  </section>
+
+  <div class="two">
+    <section class="panel" aria-label="Your reading">
+      <h2>Your reading</h2>
+      <div class="field"><label for="f-dark">Which feature is attractive or performance for the powerful, but reverse for the vulnerable?</label><textarea id="f-dark" placeholder="Name the feature and the groups, and what that tells you about your future."></textarea></div>
+      <div class="field"><label for="f-prov">Provocation question for the class</label><textarea id="f-prov" placeholder="Is [trade-off] worth [benefit]?"></textarea></div>
+    </section>
+    <section class="panel" aria-label="Kano rules">
+      <h2>How answers become categories</h2>
+      <div class="tbl-scroll"><table class="rules" id="rules"></table></div>
+      <p class="hint">Rows: functional answer and score. Columns: dysfunctional answer and score. Same rules and scores as the Kano Rules sheet of the workbook.</p>
+    </section>
+  </div>
+
+  <section class="panel no-export" aria-label="Save and export">
+    <div class="export">
+      <span class="lbl">Export</span>
+      <button class="btn small primary" id="btn-png" type="button">Image (PNG)</button>
+      <button class="btn small" id="btn-pdf" type="button">Print / Save as PDF</button>
+      <button class="btn small" id="btn-csv-res" type="button">Results (CSV)</button>
+      <button class="btn small" id="btn-csv-ans" type="button">Answers (CSV)</button>
+      <button class="btn small" id="btn-json" type="button">Save my work (.json)</button>
+      <label class="btn small" for="file-open" style="display:inline-flex;align-items:center">Open saved work</label>
+      <input type="file" id="file-open" accept=".json,application/json" hidden>
+      <button class="btn small" id="btn-example" type="button">Load example</button>
+      <button class="btn small" id="btn-clear" type="button">Clear for my project</button>
+      <span class="status" id="export-status" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function () {
+  var KEY = 'speculative-kano-v1';
+  var ANS = [
+    { k: 'L', t: 'I like it', fun: 4, dys: -2 },
+    { k: 'E', t: 'I expect it', fun: 2, dys: -1 },
+    { k: 'N', t: 'I am neutral', fun: 0, dys: 0 },
+    { k: 'T', t: 'I can tolerate it', fun: -1, dys: 2 },
+    { k: 'D', t: 'I dislike it', fun: -2, dys: 4 }
+  ];
+  // Kano table from the workbook: TABLE[functional][dysfunctional]
+  var TABLE = {
+    L: { L: 'Q', E: 'A', N: 'A', T: 'A', D: 'P' },
+    E: { L: 'R', E: 'Q', N: 'I', T: 'I', D: 'M' },
+    N: { L: 'R', E: 'I', N: 'I', T: 'I', D: 'M' },
+    T: { L: 'R', E: 'I', N: 'I', T: 'Q', D: 'M' },
+    D: { L: 'R', E: 'R', N: 'R', T: 'R', D: 'Q' }
+  };
+  var CATS = ['M', 'P', 'A', 'I', 'R', 'Q'];
+  var CATNAME = { M: 'Must-be', P: 'Performance', A: 'Attractive', I: 'Indifferent', R: 'Reverse', Q: 'Questionable' };
+  var CATVAR = { M: '--cat-m', P: '--cat-p', A: '--cat-a', I: '--cat-i', R: '--cat-r', Q: '--cat-q' };
+  function ans(k) { for (var i = 0; i < ANS.length; i++) if (ANS[i].k === k) return ANS[i]; return null; }
+  var uid = 0;
+  function nid(p) { uid += 1; return p + Date.now().toString(36) + uid; }
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+  function exampleState() {
+    var feats = [
+      { id: 'f1', name: 'Customer rating score', desc: 'The robot rates you, and good ratings get faster service' },
+      { id: 'f2', name: 'Face scan at the door', desc: 'Walk in without ordering or paying by hand' },
+      { id: 'f3', name: 'Auto-pay from wallet', desc: 'The bill is taken from your digital wallet as you leave' },
+      { id: 'f4', name: 'Apology in your language', desc: 'When it fails, the robot says sorry in your own language' }
+    ];
+    var segs = ['Everyday citizen', 'Vulnerable person', 'Company or government', 'The AI system'];
+    var people = [
+      { id: 'p1', name: 'Mei (citizen)', segment: segs[0] }, { id: 'p2', name: 'Kai (citizen)', segment: segs[0] },
+      { id: 'p3', name: 'Ah-Ma, 82 (vulnerable)', segment: segs[1] }, { id: 'p4', name: 'Rina, no ID (vulnerable)', segment: segs[1] },
+      { id: 'p5', name: 'Owner (company)', segment: segs[2] }, { id: 'p6', name: 'City inspector (government)', segment: segs[2] },
+      { id: 'p7', name: 'Service robot (AI)', segment: segs[3] }, { id: 'p8', name: 'Rating model (AI)', segment: segs[3] }
+    ];
+    // [functional, dysfunctional, importance] per person, per feature f1..f4
+    var data = {
+      p1: [['N', 'N', 3], ['E', 'D', 6], ['L', 'N', 7], ['L', 'N', 5]],
+      p2: [['T', 'N', 4], ['L', 'T', 6], ['L', 'T', 6], ['L', 'T', 4]],
+      p3: [['D', 'L', 9], ['D', 'L', 9], ['T', 'N', 5], ['L', 'D', 8]],
+      p4: [['D', 'N', 8], ['D', 'T', 10], ['D', 'N', 7], ['L', 'T', 7]],
+      p5: [['L', 'D', 9], ['L', 'D', 8], ['L', 'D', 9], ['N', 'N', 3]],
+      p6: [['L', 'T', 7], ['L', 'D', 9], ['E', 'D', 6], ['T', 'N', 2]],
+      p7: [['L', 'D', 8], ['L', 'D', 7], ['N', 'N', 4], ['N', 'T', 3]],
+      p8: [['L', 'D', 10], ['E', 'D', 8], ['N', 'T', 3], ['N', 'N', 2]]
+    };
+    var resp = {};
+    Object.keys(data).forEach(function (pid) {
+      data[pid].forEach(function (a, i) { resp[pid + '|' + feats[i].id] = { f: a[0], d: a[1], imp: a[2] }; });
+    });
+    return {
+      isExample: true, project: 'The polite restaurant robot', team: 'Example',
+      seed: 'What if restaurants only served customers their robots rated well, by 2045?',
+      features: feats, segments: segs, people: people, resp: resp, filter: 'All', current: 'p1',
+      dark: 'The face scan is Performance for the company and the AI, but Reverse for both vulnerable respondents: the same feature that speeds up service locks them out.',
+      prov: 'Would you accept being scanned at every door if it made eating out faster for everyone else?'
+    };
+  }
+  function blankState() {
+    var segs = ['Everyday citizen', 'Vulnerable person', 'Company or government', 'The AI system'];
+    var people = segs.map(function (s, i) { return { id: nid('p'), name: 'Respondent ' + (i + 1), segment: s }; });
+    return {
+      isExample: false, project: '', team: '', seed: '',
+      features: [{ id: nid('f'), name: '', desc: '' }, { id: nid('f'), name: '', desc: '' }, { id: nid('f'), name: '', desc: '' }],
+      segments: segs, people: people, resp: {}, filter: 'All', current: people[0].id, dark: '', prov: ''
+    };
+  }
+
+  var state;
+  try { var raw = localStorage.getItem(KEY); state = raw ? JSON.parse(raw) : null; } catch (e) { state = null; }
+  if (!state || !Array.isArray(state.features) || !Array.isArray(state.people)) state = exampleState();
+
+  var saveTimer = null;
+  function save() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }, 250);
+  }
+  function markEdited() { if (state.isExample) { state.isExample = false; setBanner(); } }
+  function code(i) { return 'F' + (i + 1); }
+  function fname(f, i) { return (f.name && f.name.trim()) || code(i); }
+  function pname(p, i) { return (p.name && p.name.trim()) || ('Respondent ' + (i + 1)); }
+
+  // ---------- analysis ----------
+  function catOf(r) { return r && r.f && r.d ? TABLE[r.f][r.d] : ''; }
+  function mean(a) { return a.length ? a.reduce(function (s, v) { return s + v; }, 0) / a.length : null; }
+  function sd(a, sample) {
+    var n = a.length; if (n < (sample ? 2 : 1)) return null;
+    var m = mean(a); var ss = a.reduce(function (s, v) { return s + (v - m) * (v - m); }, 0);
+    return Math.sqrt(ss / (sample ? n - 1 : n));
+  }
+  function contCat(x, y) {
+    if (x == null || y == null) return '';
+    if ((y <= 2 && x <= -1) || (y <= -1 && x <= 2)) return 'R';
+    if (y <= 2 && y >= -1 && x <= 2 && x >= -1) return 'I';
+    if (y >= 2 && x >= -1 && x <= 2) return 'A';
+    if (y <= 2 && x <= 4 && x >= 2) return 'M';
+    if (y >= 2 && x >= 2) return 'P';
+    return 'Q';
+  }
+  function analyse(segment) {
+    var people = state.people.filter(function (p) { return segment === 'All' || p.segment === segment; });
+    return state.features.map(function (f, i) {
+      var rows = [];
+      people.forEach(function (p) { var r = state.resp[p.id + '|' + f.id]; if (r && r.f && r.d) rows.push(r); });
+      var counts = { M: 0, P: 0, A: 0, I: 0, R: 0, Q: 0 };
+      var order = [];
+      var xs = [], ys = [], zs = [], xsAll = [], ysAll = [], zsAll = [];
+      rows.forEach(function (r) {
+        var c = catOf(r); counts[c] += 1; if (order.indexOf(c) < 0) order.push(c);
+        var fx = ans(r.d).dys, fy = ans(r.f).fun, z = Number(r.imp) || null;
+        xsAll.push(fx); ysAll.push(fy); if (z != null) zsAll.push(z);
+        if (c !== 'Q') { xs.push(fx); ys.push(fy); if (z != null) zs.push(z); }
+      });
+      var n = rows.length;
+      var x = mean(xs), y = mean(ys), z = mean(zs);
+      var best = '', bestN = 0;
+      order.forEach(function (c) { if (counts[c] > bestN) { best = c; bestN = counts[c]; } });
+      return {
+        f: f, i: i, n: n, x: x, y: y, z: z, cont: contCat(x, y),
+        sdx: sd(xsAll, true), sdy: sd(ysAll, true), sdz: sd(zsAll, false),
+        counts: counts, disc: best
+      };
+    });
+  }
+
+  // ---------- rendering ----------
+  function chip(c, extra) {
+    if (!c) return '<span class="chip none">—</span>';
+    return '<span class="chip ' + c + '" title="' + CATNAME[c] + '"><b>' + c + '</b>' + CATNAME[c] + (extra || '') + '</span>';
+  }
+  function fmt(v, d) { return v == null ? '—' : v.toFixed(d == null ? 2 : d); }
+
+  function renderFeatures() {
+    var el = document.getElementById('feat-list');
+    var h = ['<div class="feat-row" aria-hidden="true"><span class="lbl">Code</span><span class="lbl">Feature</span><span class="lbl desc">Benefit to the person</span><span></span></div>'];
+    state.features.forEach(function (f, i) {
+      h.push('<div class="feat-row"><span class="code">' + code(i) + '</span>' +
+        '<input type="text" id="fn-' + f.id + '" data-fname="' + f.id + '" value="' + esc(f.name) + '" placeholder="Feature name" aria-label="' + code(i) + ' name">' +
+        '<input type="text" class="desc" id="fd-' + f.id + '" data-fdesc="' + f.id + '" value="' + esc(f.desc) + '" placeholder="What the person gets from it" aria-label="' + code(i) + ' benefit">' +
+        (state.features.length > 1 ? '<button class="x" type="button" data-del-feat="' + f.id + '" aria-label="Remove ' + code(i) + '">✕</button>' : '<span></span>') + '</div>');
+    });
+    el.innerHTML = h.join('');
+    document.getElementById('btn-add-feat').disabled = state.features.length >= 12;
+  }
+  function segOptions(sel) {
+    return state.segments.map(function (s) { return '<option value="' + esc(s) + '"' + (s === sel ? ' selected' : '') + '>' + esc(s) + '</option>'; }).join('') +
+      (state.segments.indexOf(sel) < 0 ? '<option value="' + esc(sel || '') + '" selected>' + esc(sel || 'Unassigned') + '</option>' : '');
+  }
+  function renderPeople() {
+    document.getElementById('seg-list').innerHTML = state.segments.map(function (s, i) {
+      return '<span class="seg"><input type="text" id="seg-' + i + '" data-seg="' + i + '" value="' + esc(s) + '" size="' + Math.max(8, s.length) + '" aria-label="Group ' + (i + 1) + ' name">' +
+        (state.segments.length > 1 ? '<button class="x" type="button" data-del-seg="' + i + '" aria-label="Remove group ' + esc(s) + '">✕</button>' : '') + '</span>';
+    }).join('');
+    var h = ['<div class="person-row" aria-hidden="true"><span class="lbl">Respondent</span><span class="lbl">Plays the role of</span><span></span><span></span></div>'];
+    state.people.forEach(function (p, i) {
+      var done = state.features.filter(function (f) { var r = state.resp[p.id + '|' + f.id]; return r && r.f && r.d; }).length;
+      h.push('<div class="person-row"><input type="text" id="pn-' + p.id + '" data-pname="' + p.id + '" value="' + esc(p.name) + '" placeholder="Name or ID" aria-label="Respondent ' + (i + 1) + ' name">' +
+        '<select id="ps-' + p.id + '" data-pseg="' + p.id + '" aria-label="Role of respondent ' + (i + 1) + '">' + segOptions(p.segment) + '</select>' +
+        '<span class="progress">' + done + '/' + state.features.length + '</span>' +
+        (state.people.length > 1 ? '<button class="x" type="button" data-del-person="' + p.id + '" aria-label="Remove respondent ' + (i + 1) + '">✕</button>' : '<span></span>') + '</div>');
+    });
+    document.getElementById('people-list').innerHTML = h.join('');
+    document.getElementById('btn-add-person').disabled = state.people.length >= 40;
+  }
+  function renderAnswerPicker() {
+    if (!state.people.some(function (p) { return p.id === state.current; })) state.current = state.people[0] && state.people[0].id;
+    document.getElementById('sel-person').innerHTML = state.people.map(function (p, i) {
+      return '<option value="' + p.id + '"' + (p.id === state.current ? ' selected' : '') + '>' + esc(pname(p, i)) + ' · ' + esc(p.segment || 'Unassigned') + '</option>';
+    }).join('');
+  }
+  function answerSelect(id, kind, val, label) {
+    var o = '<option value="">—</option>' + ANS.map(function (a) { return '<option value="' + a.k + '"' + (a.k === val ? ' selected' : '') + '>' + a.t + '</option>'; }).join('');
+    return '<select id="' + id + '" data-ans="' + kind + '" aria-label="' + esc(label) + '">' + o + '</select>';
+  }
+  function renderAnswers() {
+    renderAnswerPicker();
+    var pid = state.current;
+    var h = ['<tr><th>Code</th><th>Feature</th><th>If it <u>has</u> it (functional)</th><th>If it does <u>not</u> (dysfunctional)</th><th>Importance</th><th>Result</th></tr>'];
+    state.features.forEach(function (f, i) {
+      var r = state.resp[pid + '|' + f.id] || {};
+      var imp = '<option value="">—</option>';
+      for (var s = 1; s <= 10; s++) imp += '<option value="' + s + '"' + (Number(r.imp) === s ? ' selected' : '') + '>' + s + '</option>';
+      h.push('<tr data-fid="' + f.id + '"><td class="code">' + code(i) + '</td><td><b>' + esc(fname(f, i)) + '</b>' + (f.desc ? '<div class="qtext">' + esc(f.desc) + '</div>' : '') + '</td>' +
+        '<td>' + answerSelect('af-' + f.id, 'f', r.f, code(i) + ' functional answer') + '</td>' +
+        '<td>' + answerSelect('ad-' + f.id, 'd', r.d, code(i) + ' dysfunctional answer') + '</td>' +
+        '<td class="imp"><select id="ai-' + f.id + '" data-ans="imp" aria-label="' + code(i) + ' importance">' + imp + '</select></td>' +
+        '<td class="cat">' + chip(catOf(r)) + '</td></tr>');
+    });
+    document.getElementById('ans-table').innerHTML = h.join('');
+    updateProgress();
+  }
+  function updateProgress() {
+    var total = state.people.length * state.features.length, done = 0;
+    state.people.forEach(function (p) { state.features.forEach(function (f) { var r = state.resp[p.id + '|' + f.id]; if (r && r.f && r.d) done += 1; }); });
+    document.getElementById('progress').textContent = done + ' of ' + total + ' answer pairs filled';
+  }
+  function renderFilter() {
+    var opts = ['All'].concat(state.segments);
+    if (opts.indexOf(state.filter) < 0) state.filter = 'All';
+    document.getElementById('sel-filter').innerHTML = opts.map(function (s) {
+      var n = s === 'All' ? state.people.length : state.people.filter(function (p) { return p.segment === s; }).length;
+      return '<option value="' + esc(s) + '"' + (s === state.filter ? ' selected' : '') + '>' + (s === 'All' ? 'All respondents' : esc(s)) + ' (' + n + ')</option>';
+    }).join('');
+  }
+  function renderLegend() {
+    document.getElementById('legend').innerHTML = CATS.map(function (c) { return chip(c); }).join('');
+  }
+  function renderRules() {
+    var h = ['<tr><th>Functional ↓ / Dysfunctional →</th>' + ANS.map(function (a) { return '<th>' + a.t + '<div class="scorecol">' + a.dys + '</div></th>'; }).join('') + '</tr>'];
+    ANS.forEach(function (fa) {
+      h.push('<tr><td><b>' + fa.t + '</b> <span class="scorecol">' + fa.fun + '</span></td>' + ANS.map(function (da) {
+        var c = TABLE[fa.k][da.k]; return '<td><span class="chip ' + c + '" title="' + CATNAME[c] + '"><b>' + c + '</b></span></td>';
+      }).join('') + '</tr>');
+    });
+    document.getElementById('rules').innerHTML = h.join('');
+  }
+
+  function renderResults() {
+    var res = analyse(state.filter);
+    var who = state.filter === 'All' ? 'all respondents' : state.filter;
+    var h = ['<tr><th>Code</th><th>Feature</th><th class="num">n</th><th class="num" title="Average dysfunctional score">X</th><th class="num" title="Average functional score">Y</th><th class="num" title="Average importance">Imp.</th><th class="num" title="Standard deviation of X">SD X</th><th class="num" title="Standard deviation of Y">SD Y</th><th>Category</th></tr>'];
+    res.forEach(function (r) {
+      h.push('<tr><td class="code">' + code(r.i) + '</td><td>' + esc(fname(r.f, r.i)) + '</td><td class="num">' + r.n + '</td><td class="num">' + fmt(r.x) + '</td><td class="num">' + fmt(r.y) + '</td><td class="num">' + fmt(r.z, 1) + '</td><td class="num">' + fmt(r.sdx) + '</td><td class="num">' + fmt(r.sdy) + '</td><td>' + chip(r.cont) + '</td></tr>');
+    });
+    document.getElementById('res-table').innerHTML = h.join('');
+    document.getElementById('chart-title').textContent = 'Kano map · ' + who;
+    document.getElementById('chart').innerHTML = chartSVG(res);
+
+    var d = ['<tr><th>Code</th><th>Feature</th><th class="num">n</th>' + CATS.map(function (c) { return '<th class="num" title="' + CATNAME[c] + '">' + c + ' %</th>'; }).join('') + '<th>Most common</th></tr>'];
+    res.forEach(function (r) {
+      d.push('<tr><td class="code">' + code(r.i) + '</td><td>' + esc(fname(r.f, r.i)) + '</td><td class="num">' + r.n + '</td>' +
+        CATS.map(function (c) { return '<td class="num">' + (r.n ? Math.round(r.counts[c] / r.n * 100) : '—') + '</td>'; }).join('') +
+        '<td>' + chip(r.disc) + '</td></tr>');
+    });
+    document.getElementById('disc-table').innerHTML = d.join('');
+    document.getElementById('disc-title').textContent = 'Answer mix · ' + who;
+    document.getElementById('disc-chart').innerHTML = discSVG(res);
+    renderCompare();
+  }
+
+  // 100% stacked bar per feature; the most common category is outlined
+  function discSVG(res) {
+    var Wd = 560, L = 44, R = 14, T = 8, rowH = 34, barH = 24;
+    var pw = Wd - L - R, Ht = T + res.length * rowH + 30;
+    var s = ['<svg viewBox="0 0 ' + Wd + ' ' + Ht + '" role="img" aria-label="Share of answers in each Kano category, per feature">'];
+    [0, 25, 50, 75, 100].forEach(function (p) {
+      var x = L + p / 100 * pw;
+      s.push('<line x1="' + x + '" y1="' + T + '" x2="' + x + '" y2="' + (T + res.length * rowH) + '" style="stroke:var(--grid);stroke-width:1"/>');
+      s.push('<text class="tick" x="' + x + '" y="' + (T + res.length * rowH + 16) + '" text-anchor="middle">' + p + '%</text>');
+    });
+    res.forEach(function (r, k) {
+      var y = T + k * rowH + (rowH - barH) / 2;
+      s.push('<text x="' + (L - 8) + '" y="' + (y + barH / 2 + 4) + '" text-anchor="end" style="font-size:12px;font-weight:600;fill:var(--accent)">' + code(r.i) + '</text>');
+      if (!r.n) {
+        s.push('<rect x="' + L + '" y="' + y + '" width="' + pw + '" height="' + barH + '" rx="3" style="fill:var(--grid)"/>');
+        s.push('<text class="axis-label" x="' + (L + 10) + '" y="' + (y + barH / 2 + 4) + '">no answers</text>');
+        return;
+      }
+      var x = L, best = null;
+      CATS.forEach(function (c) {
+        if (!r.counts[c]) return;
+        var w = r.counts[c] / r.n * pw, pct = Math.round(r.counts[c] / r.n * 100);
+        s.push('<g><title>' + esc(code(r.i) + ' ' + fname(r.f, r.i) + ': ' + CATNAME[c] + ' ' + pct + '% (' + r.counts[c] + ' of ' + r.n + ')') + '</title>' +
+          '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + barH + '" style="fill:var(' + CATVAR[c] + ');stroke:var(--sheet);stroke-width:1"/>' +
+          (w >= 34 ? '<text class="bar-label" x="' + (x + w / 2) + '" y="' + (y + barH / 2 + 4) + '" text-anchor="middle" style="fill:var(' + (c === 'Q' ? '--ink' : '--sheet') + ')">' + c + ' ' + pct + '%</text>' : '') + '</g>');
+        if (c === r.disc) best = { x: x, w: w };
+        x += w;
+      });
+      if (best) s.push('<rect x="' + (best.x + 1) + '" y="' + (y + 1) + '" width="' + Math.max(0, best.w - 2) + '" height="' + (barH - 2) + '" style="fill:none;stroke:var(--ink);stroke-width:2"/>');
+    });
+    s.push('</svg>');
+    return s.join('');
+  }
+
+  function chartSVG(res) {
+    var Wd = 560, Ht = 520, L = 56, R = 20, T = 20, B = 52;
+    var pw = Wd - L - R, ph = Ht - T - B;
+    function X(v) { return L + (v + 2) / 6 * pw; }
+    function Y(v) { return T + (4 - v) / 6 * ph; }
+    var s = ['<svg viewBox="0 0 ' + Wd + ' ' + Ht + '" role="img" aria-label="Kano map: features plotted by dysfunctional and functional score">'];
+    function zone(x0, x1, y0, y1, v) { s.push('<rect x="' + X(x0) + '" y="' + Y(y1) + '" width="' + (X(x1) - X(x0)) + '" height="' + (Y(y0) - Y(y1)) + '" style="fill:var(' + v + ')"/>'); }
+    zone(-2, -1, 2, 4, '--zone-q');
+    zone(-1, 2, 2, 4, '--zone-a');
+    zone(2, 4, 2, 4, '--zone-p');
+    zone(-1, 2, -1, 2, '--zone-i');
+    zone(2, 4, -2, 2, '--zone-m');
+    zone(-2, -1, -2, 2, '--zone-r');
+    zone(-1, 2, -2, -1, '--zone-r');
+    for (var t = -2; t <= 4; t++) {
+      s.push('<line x1="' + X(t) + '" y1="' + T + '" x2="' + X(t) + '" y2="' + (T + ph) + '" style="stroke:var(--sheet);stroke-width:1"/>');
+      s.push('<line x1="' + L + '" y1="' + Y(t) + '" x2="' + (L + pw) + '" y2="' + Y(t) + '" style="stroke:var(--sheet);stroke-width:1"/>');
+      s.push('<text class="tick" x="' + X(t) + '" y="' + (T + ph + 16) + '" text-anchor="middle">' + t + '</text>');
+      s.push('<text class="tick" x="' + (L - 8) + '" y="' + (Y(t) + 4) + '" text-anchor="end">' + t + '</text>');
+    }
+    s.push('<rect x="' + L + '" y="' + T + '" width="' + pw + '" height="' + ph + '" style="fill:none;stroke:var(--line)"/>');
+    function zl(txt, x, y, v) { s.push('<text class="zone-label" x="' + X(x) + '" y="' + Y(y) + '" text-anchor="middle" style="fill:var(' + v + ')">' + txt + '</text>'); }
+    zl('Attractive', 0.5, 3.6, '--cat-a'); zl('Performance', 3, 3.6, '--cat-p'); zl('Indifferent', 0.5, 1.6, '--cat-i');
+    zl('Must-be', 3, -1.7, '--cat-m'); zl('Reverse', -1.5, -1.7, '--cat-r'); zl('Q', -1.5, 3.6, '--cat-q');
+    s.push('<text class="axis-label" x="' + (L + pw / 2) + '" y="' + (Ht - 12) + '" text-anchor="middle">Dysfunctional score (X): how bad it is if the feature is missing →</text>');
+    s.push('<text class="axis-label" transform="translate(16 ' + (T + ph / 2) + ') rotate(-90)" text-anchor="middle">Functional score (Y): how good it is when present →</text>');
+    var pts = res.filter(function (r) { return r.x != null && r.y != null; });
+    pts.sort(function (a, b) { return (b.z || 0) - (a.z || 0); });
+    pts.forEach(function (r) {
+      var rad = 7 + Math.sqrt(Math.max(1, r.z || 1) / 10) * 17;
+      var cx = X(Math.max(-2, Math.min(4, r.x))), cy = Y(Math.max(-2, Math.min(4, r.y)));
+      var c = r.cont || 'Q';
+      s.push('<g><title>' + esc(code(r.i) + ' ' + fname(r.f, r.i) + ': X ' + fmt(r.x) + ', Y ' + fmt(r.y) + ', importance ' + fmt(r.z, 1) + ', ' + (CATNAME[c] || '')) + '</title>' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + rad + '" style="fill:var(' + CATVAR[c] + ');fill-opacity:0.78;stroke:var(--sheet);stroke-width:2"/>' +
+        '<text x="' + cx + '" y="' + (cy + 4) + '" text-anchor="middle" style="font-size:12px;font-weight:600;fill:var(--sheet)">' + code(r.i) + '</text></g>');
+    });
+    if (!pts.length) s.push('<text class="axis-label" x="' + (L + pw / 2) + '" y="' + (T + ph / 2) + '" text-anchor="middle">Fill in answers to see the map</text>');
+    s.push('</svg>');
+    return s.join('');
+  }
+
+  function renderCompare() {
+    var segs = state.segments;
+    var per = {};
+    segs.forEach(function (sg) { per[sg] = analyse(sg); });
+    var all = analyse('All');
+    var h = ['<tr><th>Code</th><th>Feature</th>' + segs.map(function (sg) { return '<th>' + esc(sg) + '</th>'; }).join('') + '<th>All</th><th></th></tr>'];
+    var flags = [];
+    state.features.forEach(function (f, i) {
+      var cats = segs.map(function (sg) { return per[sg][i].cont; });
+      var good = [], bad = [];
+      cats.forEach(function (c, k) { if (c === 'A' || c === 'P') good.push(segs[k]); if (c === 'R') bad.push(segs[k]); });
+      var split = good.length && bad.length;
+      if (split) flags.push({ f: fname(f, i), code: code(i), good: good, bad: bad });
+      h.push('<tr><td class="code">' + code(i) + '</td><td>' + esc(fname(f, i)) + '</td>' +
+        segs.map(function (sg) { var r = per[sg][i]; return '<td>' + (r.n ? chip(r.cont) : '<span class="chip none">no answers</span>') + '</td>'; }).join('') +
+        '<td>' + chip(all[i].cont) + '</td><td>' + (split ? '<span class="flag">Provocation</span>' : '') + '</td></tr>');
+    });
+    document.getElementById('cmp-table').innerHTML = h.join('');
+    var ins = [];
+    flags.forEach(function (fl) {
+      ins.push('<li class="crit"><b>' + fl.code + ' ' + esc(fl.f) + ':</b> wanted by ' + fl.good.map(esc).join(', ') + ', but Reverse for ' + fl.bad.map(esc).join(', ') + '. This is a strong place for your provocation.</li>');
+    });
+    var musts = all.filter(function (r) { return r.cont === 'M'; });
+    if (musts.length) ins.push('<li><b>Must-be overall:</b> ' + musts.map(function (r) { return code(r.i) + ' ' + esc(fname(r.f, r.i)); }).join(', ') + '. In your future these are no longer a choice.</li>');
+    var attr = all.filter(function (r) { return r.cont === 'A'; });
+    if (attr.length) ins.push('<li><b>Attractive overall:</b> ' + attr.map(function (r) { return code(r.i) + ' ' + esc(fname(r.f, r.i)); }).join(', ') + '. Ask what happens when today’s delight becomes tomorrow’s must-be.</li>');
+    if (!flags.length && !musts.length && !attr.length) ins.push('<li>Fill in answers for at least two groups to compare how different people experience the same feature.</li>');
+    else if (!flags.length) ins.push('<li>No feature splits the groups into wanted and Reverse yet. Check whether every role card was played honestly.</li>');
+    document.getElementById('insights').innerHTML = ins.join('');
+  }
+
+  function renderAll() {
+    renderFeatures(); renderPeople(); renderAnswers(); renderFilter(); renderLegend(); renderRules(); renderResults();
+  }
+  function refreshResults() { renderPeople(); renderAnswerPicker(); updateProgress(); renderFilter(); renderResults(); }
+  function setBanner() { document.getElementById('example-banner').hidden = !state.isExample; }
+  function fillFields() {
+    ['project', 'team', 'seed', 'dark', 'prov'].forEach(function (k) { document.getElementById('f-' + k).value = state[k] || ''; });
+  }
+
+  // ---------- events ----------
+  ['project', 'team', 'seed', 'dark', 'prov'].forEach(function (k) {
+    document.getElementById('f-' + k).addEventListener('input', function (e) { state[k] = e.target.value; markEdited(); save(); });
+  });
+  var featList = document.getElementById('feat-list');
+  featList.addEventListener('input', function (e) {
+    var t = e.target, f;
+    if (t.dataset.fname) { f = state.features.find(function (x) { return x.id === t.dataset.fname; }); if (f) f.name = t.value; }
+    else if (t.dataset.fdesc) { f = state.features.find(function (x) { return x.id === t.dataset.fdesc; }); if (f) f.desc = t.value; }
+    else return;
+    markEdited(); save();
+    clearTimeout(featList.t); featList.t = setTimeout(function () { renderAnswers(); renderResults(); }, 400);
+  });
+  featList.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-del-feat]'); if (!b) return;
+    var id = b.getAttribute('data-del-feat');
+    state.features = state.features.filter(function (f) { return f.id !== id; });
+    Object.keys(state.resp).forEach(function (k) { if (k.split('|')[1] === id) delete state.resp[k]; });
+    markEdited(); save(); renderAll();
+  });
+  document.getElementById('btn-add-feat').addEventListener('click', function () {
+    if (state.features.length >= 12) return;
+    var f = { id: nid('f'), name: '', desc: '' }; state.features.push(f); markEdited(); save(); renderAll();
+    var el = document.getElementById('fn-' + f.id); if (el) el.focus();
+  });
+
+  document.getElementById('seg-list').addEventListener('change', function (e) {
+    var t = e.target; if (t.dataset.seg == null) return;
+    var i = Number(t.dataset.seg), old = state.segments[i], nv = t.value.trim() || old;
+    if (nv !== old && state.segments.indexOf(nv) > -1) { t.value = old; return; }
+    state.segments[i] = nv;
+    state.people.forEach(function (p) { if (p.segment === old) p.segment = nv; });
+    if (state.filter === old) state.filter = nv;
+    markEdited(); save(); renderAll();
+  });
+  document.getElementById('seg-list').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-del-seg]'); if (!b) return;
+    var i = Number(b.getAttribute('data-del-seg')), name = state.segments[i];
+    state.segments.splice(i, 1);
+    state.people.forEach(function (p) { if (p.segment === name) p.segment = state.segments[0]; });
+    markEdited(); save(); renderAll();
+  });
+  document.getElementById('btn-add-seg').addEventListener('click', function () {
+    var n = 1, name; do { name = 'New group ' + n; n += 1; } while (state.segments.indexOf(name) > -1);
+    state.segments.push(name); markEdited(); save(); renderAll();
+    var el = document.getElementById('seg-' + (state.segments.length - 1)); if (el) { el.focus(); el.select(); }
+  });
+  var peopleList = document.getElementById('people-list');
+  peopleList.addEventListener('input', function (e) {
+    var t = e.target; if (!t.dataset.pname) return;
+    var p = state.people.find(function (x) { return x.id === t.dataset.pname; }); if (p) p.name = t.value;
+    markEdited(); save(); renderAnswerPicker();
+  });
+  peopleList.addEventListener('change', function (e) {
+    var t = e.target; if (!t.dataset.pseg) return;
+    var p = state.people.find(function (x) { return x.id === t.dataset.pseg; }); if (p) p.segment = t.value;
+    markEdited(); save(); renderAnswerPicker(); renderFilter(); renderResults();
+  });
+  peopleList.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-del-person]'); if (!b) return;
+    var id = b.getAttribute('data-del-person');
+    state.people = state.people.filter(function (p) { return p.id !== id; });
+    Object.keys(state.resp).forEach(function (k) { if (k.split('|')[0] === id) delete state.resp[k]; });
+    markEdited(); save(); renderAll();
+  });
+  document.getElementById('btn-add-person').addEventListener('click', function () {
+    var p = { id: nid('p'), name: 'Respondent ' + (state.people.length + 1), segment: state.segments[0] || '' };
+    state.people.push(p); state.current = p.id; markEdited(); save(); renderAll();
+    var el = document.getElementById('pn-' + p.id); if (el) { el.focus(); el.select(); }
+  });
+
+  document.getElementById('sel-person').addEventListener('change', function (e) { state.current = e.target.value; save(); renderAnswers(); });
+  function step(d) {
+    var i = state.people.findIndex(function (p) { return p.id === state.current; });
+    var j = Math.max(0, Math.min(state.people.length - 1, i + d));
+    if (j !== i) { state.current = state.people[j].id; save(); renderAnswers(); }
+  }
+  document.getElementById('btn-prev').addEventListener('click', function () { step(-1); });
+  document.getElementById('btn-next').addEventListener('click', function () { step(1); });
+  document.getElementById('ans-table').addEventListener('change', function (e) {
+    var t = e.target, tr = t.closest('tr[data-fid]'); if (!tr || !t.dataset.ans) return;
+    var k = state.current + '|' + tr.getAttribute('data-fid');
+    var r = state.resp[k] || {};
+    if (t.dataset.ans === 'imp') r.imp = t.value ? Number(t.value) : null; else r[t.dataset.ans] = t.value || '';
+    state.resp[k] = r;
+    tr.querySelector('td.cat').innerHTML = chip(catOf(r));
+    markEdited(); save(); refreshResults();
+  });
+  document.getElementById('sel-filter').addEventListener('change', function (e) { state.filter = e.target.value; save(); renderResults(); });
+
+  // ---------- CSV import ----------
+  function parseCSV(text) {
+    text = text.replace(/^﻿/, '');
+    var delim = (text.split('\n')[0].match(/;/g) || []).length > (text.split('\n')[0].match(/,/g) || []).length ? ';' : ',';
+    var rows = [], row = [], cell = '', q = false;
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (q) {
+        if (ch === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; }
+        else cell += ch;
+      } else if (ch === '"') q = true;
+      else if (ch === delim) { row.push(cell); cell = ''; }
+      else if (ch === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+      else if (ch !== '\r') cell += ch;
+    }
+    if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+    return rows.filter(function (r) { return r.some(function (c) { return c.trim() !== ''; }); });
+  }
+  function matchAnswer(t) {
+    t = String(t || '').trim().toLowerCase().replace(/\s+/g, ' ');
+    if (!t) return '';
+    var map = { 'i like it': 'L', 'like': 'L', 'i expect it': 'E', 'expect': 'E', 'must-be': 'E', 'i am neutral': 'N', "i'm neutral": 'N', 'neutral': 'N', 'i can tolerate it': 'T', 'i can live with it': 'T', 'tolerate': 'T', 'live with': 'T', 'i dislike it': 'D', 'dislike': 'D' };
+    if (map[t]) return map[t];
+    if (/^[lentd]$/.test(t)) return t.toUpperCase();
+    return null;
+  }
+  function iflash(m) { document.getElementById('import-status').textContent = m; }
+  document.getElementById('file-csv').addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0]; if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var rows = parseCSV(String(reader.result));
+      if (rows.length < 2) { iflash('The file has no answer rows.'); e.target.value = ''; return; }
+      var head = rows[0].map(function (c) { return c.trim().toLowerCase(); });
+      function col(names) { for (var i = 0; i < head.length; i++) for (var j = 0; j < names.length; j++) if (head[i].indexOf(names[j]) === 0) return i; return -1; }
+      var cF = col(['feature']), cU = col(['user', 'respondent']), cFu = col(['functional']), cD = col(['dysfunctional']), cI = col(['self-stated', 'importance']), cS = col(['segment', 'role', 'group']);
+      if (cF < 0 || cU < 0 || cFu < 0 || cD < 0) { iflash('Missing columns. The file needs Feature, User, Functional and Dysfunctional.'); e.target.value = ''; return; }
+      if (state.isExample) { state = blankState(); state.features = []; state.people = []; fillFields(); }
+      var added = 0, skipped = 0;
+      rows.slice(1).forEach(function (r) {
+        var fk = (r[cF] || '').trim(), uk = (r[cU] || '').trim();
+        var fa = matchAnswer(r[cFu]), da = matchAnswer(r[cD]);
+        if (!fk || !uk || fa === null || da === null || !fa || !da) { skipped += 1; return; }
+        var fi = state.features.findIndex(function (f, i) { return code(i).toLowerCase() === fk.toLowerCase() || (f.name || '').toLowerCase() === fk.toLowerCase(); });
+        if (fi < 0) {
+          if (state.features.length >= 12) { skipped += 1; return; }
+          state.features.push({ id: nid('f'), name: /^f\d+$/i.test(fk) ? '' : fk, desc: '' }); fi = state.features.length - 1;
+        }
+        var p = state.people.find(function (x) { return (x.name || '').toLowerCase() === uk.toLowerCase(); });
+        if (!p) {
+          var sg = cS > -1 ? (r[cS] || '').trim() : '';
+          if (sg && state.segments.indexOf(sg) < 0) state.segments.push(sg);
+          p = { id: nid('p'), name: uk, segment: sg || state.segments[0] || '' }; state.people.push(p);
+        }
+        var imp = cI > -1 ? Math.round(Number(r[cI])) : NaN;
+        state.resp[p.id + '|' + state.features[fi].id] = { f: fa, d: da, imp: isNaN(imp) ? null : Math.max(1, Math.min(10, imp)) };
+        added += 1;
+      });
+      if (!state.people.length) state.people.push({ id: nid('p'), name: 'Respondent 1', segment: state.segments[0] });
+      if (!state.features.length) state.features.push({ id: nid('f'), name: '', desc: '' });
+      state.current = state.people[0].id; state.isExample = false;
+      setBanner(); save(); renderAll();
+      iflash('Brought in ' + added + ' answer pairs' + (skipped ? ', skipped ' + skipped + ' rows that were empty or unreadable' : '') + '.');
+      e.target.value = '';
+    };
+    reader.readAsText(file);
+  });
+
+  // ---------- export ----------
+  function slug() {
+    var base = (state.project || 'kano-analysis').toLowerCase().replace(/[^a-z0-9一-鿿]+/g, '-').replace(/^-+|-+$/g, '');
+    return (base || 'kano-analysis').slice(0, 60);
+  }
+  function xflash(msg) { var s = document.getElementById('export-status'); s.textContent = msg; clearTimeout(xflash.t); xflash.t = setTimeout(function () { s.textContent = ''; }, 4500); }
+  function download(blob, name) {
+    var url = URL.createObjectURL(blob); var a = document.createElement('a'); a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+  function csvCell(v) { v = String(v == null ? '' : v); return /[",\n;]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+  function csvBlob(rows) { return new Blob(['﻿' + rows.map(function (r) { return r.map(csvCell).join(','); }).join('\r\n')], { type: 'text/csv;charset=utf-8' }); }
+  document.getElementById('btn-csv-ans').addEventListener('click', function () {
+    var rows = [['Feature', 'User', 'Functional', 'Dysfunctional', 'Self-stated Importance', 'Functional Score', 'Dysfunctional Score', 'Category (Discrete)', 'Segment', 'Feature name']];
+    state.features.forEach(function (f, i) {
+      state.people.forEach(function (p, j) {
+        var r = state.resp[p.id + '|' + f.id];
+        if (!r || !r.f || !r.d) return;
+        rows.push([code(i), pname(p, j), ans(r.f).t, ans(r.d).t, r.imp == null ? '' : r.imp, ans(r.f).fun, ans(r.d).dys, catOf(r), p.segment || '', fname(f, i)]);
+      });
+    });
+    download(csvBlob(rows), slug() + '-answers.csv');
+    xflash('Answers downloaded in the same columns as the workbook’s Responses sheet.');
+  });
+  document.getElementById('btn-csv-template').addEventListener('click', function () {
+    // One row per feature and respondent, with answers already filled where they exist
+    var rows = [['Feature', 'User', 'Functional', 'Dysfunctional', 'Self-stated Importance', 'Segment', 'Feature name']];
+    state.people.forEach(function (p, j) {
+      state.features.forEach(function (f, i) {
+        var r = state.resp[p.id + '|' + f.id] || {};
+        rows.push([code(i), pname(p, j), r.f ? ans(r.f).t : '', r.d ? ans(r.d).t : '', r.imp == null ? '' : r.imp, p.segment || '', f.name || '']);
+      });
+    });
+    download(csvBlob(rows), slug() + '-template.csv');
+    iflash('Template downloaded. Fill it in, save as CSV UTF-8, then choose it here.');
+  });
+  document.getElementById('btn-csv-res').addEventListener('click', function () {
+    var rows = [['Project', state.project || ''], ['By', state.team || ''], ['What if', state.seed || ''], []];
+    var groups = ['All'].concat(state.segments);
+    rows.push(['Group', 'Feature', 'Name', 'n', 'Dysfunctional (X)', 'Functional (Y)', 'Importance (Z)', 'Category (continuous)', 'Std Dev X', 'Std Dev Y', 'Std Dev Z', 'M %', 'P %', 'A %', 'I %', 'R %', 'Q %', 'Category (discrete)']);
+    groups.forEach(function (g) {
+      analyse(g).forEach(function (r) {
+        function pc(c) { return r.n ? Math.round(r.counts[c] / r.n * 1000) / 10 : ''; }
+        function v(x, d) { return x == null ? '' : Number(x.toFixed(d)); }
+        rows.push([g === 'All' ? 'All respondents' : g, code(r.i), fname(r.f, r.i), r.n, v(r.x, 2), v(r.y, 2), v(r.z, 2), r.cont ? CATNAME[r.cont] : '', v(r.sdx, 2), v(r.sdy, 2), v(r.sdz, 2), pc('M'), pc('P'), pc('A'), pc('I'), pc('R'), pc('Q'), r.disc ? CATNAME[r.disc] : '']);
+      });
+    });
+    rows.push([]); rows.push(['Reading', state.dark || '']); rows.push(['Provocation', state.prov || '']);
+    download(csvBlob(rows), slug() + '-results.csv');
+    xflash('Results downloaded for all respondents and every group.');
+  });
+  document.getElementById('btn-json').addEventListener('click', function () {
+    var d = JSON.parse(JSON.stringify(state)); d.format = 'speculative-kano'; d.version = 1;
+    download(new Blob([JSON.stringify(d, null, 2)], { type: 'application/json' }), slug() + '.json');
+    xflash('Saved. Use “Open saved work” to continue later, on any device.');
+  });
+  document.getElementById('file-open').addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0]; if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var d = JSON.parse(reader.result);
+        if (!d || !Array.isArray(d.features) || !Array.isArray(d.people)) throw new Error('bad');
+        var s = {
+          isExample: false, project: String(d.project || ''), team: String(d.team || ''), seed: String(d.seed || ''),
+          features: d.features.slice(0, 12).map(function (f) { return { id: String(f.id), name: String(f.name || ''), desc: String(f.desc || '') }; }),
+          segments: (Array.isArray(d.segments) && d.segments.length ? d.segments : ['Everyday citizen']).map(String),
+          people: d.people.slice(0, 40).map(function (p) { return { id: String(p.id), name: String(p.name || ''), segment: String(p.segment || '') }; }),
+          resp: {}, filter: 'All', current: '', dark: String(d.dark || ''), prov: String(d.prov || '')
+        };
+        Object.keys(d.resp || {}).forEach(function (k) {
+          var r = d.resp[k] || {};
+          s.resp[k] = { f: TABLE[r.f] ? r.f : '', d: TABLE.L[r.d] ? r.d : '', imp: r.imp == null ? null : Math.max(1, Math.min(10, Number(r.imp) || 1)) };
+        });
+        s.current = s.people[0] ? s.people[0].id : '';
+        state = s; fillFields(); setBanner(); save(); renderAll();
+        xflash('Opened “' + (state.project || file.name) + '”.');
+      } catch (err) { xflash('That file is not a saved Kano analysis. Choose a .json file saved from this page.'); }
+      e.target.value = '';
+    };
+    reader.readAsText(file);
+  });
+  document.getElementById('btn-pdf').addEventListener('click', function () { window.print(); });
+  document.getElementById('btn-png').addEventListener('click', function () {
+    if (typeof html2canvas !== 'function') { xflash('The image tool could not load. Check your internet connection, or use Print / Save as PDF.'); return; }
+    var btn = this; btn.disabled = true; xflash('Making the image…');
+    document.documentElement.classList.add('exporting');
+    var target = document.querySelector('.wrap');
+    html2canvas(target, { backgroundColor: getComputedStyle(document.body).backgroundColor, scale: 2, windowWidth: 1280 }).then(function (canvas) {
+      document.documentElement.classList.remove('exporting');
+      canvas.toBlob(function (blob) {
+        btn.disabled = false;
+        if (!blob) { xflash('The image could not be made. Try Print / Save as PDF.'); return; }
+        download(blob, slug() + '.png'); xflash('Image downloaded.');
+      }, 'image/png');
+    }).catch(function () { document.documentElement.classList.remove('exporting'); btn.disabled = false; xflash('The image could not be made. Try Print / Save as PDF.'); });
+  });
+
+  var pending = {};
+  function confirmClick(btn, key, label, ask, fn) {
+    if (!state.isExample && !pending[key]) {
+      pending[key] = true; btn.textContent = ask;
+      setTimeout(function () { pending[key] = false; btn.textContent = label; }, 3000);
+      return;
+    }
+    pending[key] = false; btn.textContent = label; fn();
+  }
+  function doClear() { state = blankState(); fillFields(); setBanner(); save(); renderAll(); xflash('Cleared. Start with your features.'); }
+  document.getElementById('btn-clear').addEventListener('click', function (e) { confirmClick(e.currentTarget, 'clear', 'Clear for my project', 'Click again to erase', doClear); });
+  document.getElementById('btn-clear-banner').addEventListener('click', doClear);
+  document.getElementById('btn-example').addEventListener('click', function (e) {
+    confirmClick(e.currentTarget, 'ex', 'Load example', 'Replace my work? Click again', function () { state = exampleState(); fillFields(); setBanner(); save(); renderAll(); });
+  });
+
+  fillFields(); setBanner(); renderAll();
+})();
+</script>
+</body>
+</html>
