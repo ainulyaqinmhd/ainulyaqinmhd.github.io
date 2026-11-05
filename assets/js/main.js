@@ -346,7 +346,7 @@
       const subject = form.querySelector('[name="subject"]').value;
       const message = form.querySelector('[name="message"]').value;
 
-      const mailtoLink = `mailto:ainulyaqinmhd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+      const mailtoLink = `mailto:yaqin@saturn.yzu.edu.tw?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
       window.location.href = mailtoLink;
     });
   }
