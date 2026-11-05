@@ -85,56 +85,122 @@
   }
 
   /* ─── Portfolio Filter ─── */
+  function readMoreLabel(btn, expanded, count) {
+    btn.setAttribute("aria-expanded", expanded);
+    btn.innerHTML = expanded
+      ? 'Show less <i class="bi bi-chevron-up"></i>'
+      : `Read more (${count}) <i class="bi bi-chevron-down"></i>`;
+  }
+
+  function revealIn(item, i) {
+    item.classList.remove("is-revealed");
+    void item.offsetWidth; // restart the fade-in on every expand
+    item.style.animationDelay = `${i * 60}ms`;
+    item.classList.add("is-revealed");
+  }
+
+  /* Category filter plus "Read more": the grid shows the newest items first,
+     and the limit applies to whichever category is selected */
   function initPortfolioFilter() {
+    const grid = document.querySelector(".portfolio-grid");
     const filterBtns = document.querySelectorAll(".portfolio-filter-btn");
-    const items = document.querySelectorAll(".portfolio-item[data-category]");
+    const items = Array.from(document.querySelectorAll(".portfolio-item[data-category]"));
+    if (!grid || !items.length) return;
 
-    if (!filterBtns.length) return;
+    // Fewer cards on phones: data-show-mobile applies at 768px and below
+    const mobile = window.matchMedia("(max-width: 768px)");
+    const desktopLimit = parseInt(grid.dataset.show, 10) || Infinity;
+    const mobileLimit = parseInt(grid.dataset.showMobile, 10) || desktopLimit;
+    let limit = mobile.matches ? mobileLimit : desktopLimit;
+    let filter = "all";
+    let expanded = false;
 
-    filterBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const filter = btn.getAttribute("data-filter");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "read-more-btn is-grid";
+    grid.after(btn);
 
-        filterBtns.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
+    function render(animate) {
+      const matching = items.filter(
+        (item) => filter === "all" || item.dataset.category.split(" ").includes(filter)
+      );
+      items.forEach((item) => {
+        const pos = matching.indexOf(item);
+        const show = pos > -1 && (expanded || pos < limit);
+        item.style.display = show ? "" : "none";
+        item.classList.remove("is-revealed");
+        if (!show) return;
+        item.classList.add("visible");
+        if (animate && pos >= limit) revealIn(item, pos - limit);
+      });
+      const extra = Math.max(0, matching.length - limit);
+      btn.hidden = !extra;
+      readMoreLabel(btn, expanded, extra);
+    }
 
-        items.forEach((item) => {
-          const cats = item.getAttribute("data-category").split(" ");
-          if (filter === "all" || cats.includes(filter)) {
-            item.style.display = "";
-            // Trigger reflow for animation
-            setTimeout(() => item.classList.add("visible"), 10);
-          } else {
-            item.style.display = "none";
-            item.classList.remove("visible");
+    mobile.addEventListener("change", () => {
+      limit = mobile.matches ? mobileLimit : desktopLimit;
+      render(false);
+    });
+
+    filterBtns.forEach((b) => {
+      b.addEventListener("click", () => {
+        filterBtns.forEach((x) => x.classList.remove("active"));
+        b.classList.add("active");
+        filter = b.dataset.filter;
+        expanded = false;
+        render(false);
+      });
+    });
+
+    btn.addEventListener("click", () => {
+      expanded = !expanded;
+      render(true);
+      if (!expanded && grid.getBoundingClientRect().top < 0) {
+        grid.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    render(false);
+  }
+
+  /* "Read more" for card grids such as the blog */
+  function initGridReadMore() {
+    document.querySelectorAll(".blog-grid[data-show], .blog-listing-grid[data-show]").forEach((grid) => {
+      const limit = parseInt(grid.dataset.show, 10);
+      const cards = Array.from(grid.children);
+      const extra = cards.slice(limit);
+      if (!extra.length) return;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "read-more-btn is-grid";
+      grid.after(btn);
+
+      function render(expanded, animate) {
+        extra.forEach((card, i) => {
+          card.hidden = !expanded;
+          card.classList.remove("is-revealed");
+          if (expanded) {
+            card.classList.add("visible");
+            if (animate) revealIn(card, i);
           }
         });
+        readMoreLabel(btn, expanded, extra.length);
+      }
+
+      render(false);
+      btn.addEventListener("click", () => {
+        const expanded = btn.getAttribute("aria-expanded") !== "true";
+        render(expanded, true);
+        if (!expanded && grid.getBoundingClientRect().top < 0) {
+          grid.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       });
     });
   }
 
   /* ─── Toggle Full Portfolio ─── */
-  function initPortfolioToggle() {
-    const toggleBtn = document.getElementById("toggle-portfolio");
-    const fullSection = document.getElementById("portfolio-full");
-
-    if (!toggleBtn || !fullSection) return;
-
-    toggleBtn.addEventListener("click", () => {
-      const isHidden = fullSection.style.display === "none" || !fullSection.style.display;
-      fullSection.style.display = isHidden ? "block" : "none";
-      toggleBtn.textContent = isHidden ? "Show Less ↑" : "View All Work →";
-      
-      if (isHidden) {
-        // Reinit animations for newly visible items
-        setTimeout(() => {
-          document.querySelectorAll("#portfolio-full .fade-up").forEach((el) => {
-            el.classList.add("visible");
-          });
-        }, 100);
-      }
-    });
-  }
 
   /* ─── Typing Text Effect ─── */
   function initTypingEffect() {
@@ -377,10 +443,10 @@
     initScrollSpy();
     initMobileMenu();
     initPortfolioFilter();
-    initPortfolioToggle();
     initTypingEffect();
     initSmoothScroll();
     initReadMore();
+    initGridReadMore();
     initProjectModal();
     initContactForm();
     initBackToTop();

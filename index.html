@@ -176,100 +176,12 @@
     <div class="page-wrap">
       <div class="fade-up">
         <p class="section-label">Portfolio</p>
-        <h2 class="section-title">Selected Work</h2>
+        <h2 class="section-title">Recent Work</h2>
         <p class="section-subtitle">Research-driven design projects spanning AI, VR, interaction design, and user
-          experience.</p>
+          experience, newest first.</p>
       </div>
 
-      <!-- Featured Work Cards -->
-      <div class="work-grid">
-        <!-- Card 1: AI REITs Platform -->
-        <a href="Portfolio/AI&DATA/AI_TABC.html" class="work-card fade-up" data-project="ai_tabc">
-          <img src="assets/img/portfolio/AIDATA/AD-TABC/AD_TABC0.png" alt="AI REITs Platform">
-          <div class="work-card-overlay"></div>
-          <div class="work-card-content">
-            <div>
-              <p class="work-card-title">Venture Your Green Investment Capital: AI REITs Platform</p>
-              <p class="work-card-tags">#AIGC · #NLP · #LLM</p>
-            </div>
-            <div class="work-card-arrow">↗</div>
-          </div>
-        </a>
-
-        <!-- Card 2: VR Spatial Reasoning -->
-        <a href="Portfolio/AI&DATA/AI_VRGSR.html" class="work-card fade-up" data-project="ai_vrgsr">
-          <img src="assets/img/portfolio/AIDATA/AD-VRGSR/AD_VRGSR0.png" alt="VR Spatial Reasoning">
-          <div class="work-card-overlay"></div>
-          <div class="work-card-content">
-            <div>
-              <p class="work-card-title">Enhancing Spatial-Reasoning Perception Using VR Immersive Experience</p>
-              <p class="work-card-tags">#VR · #InteractionDesign</p>
-            </div>
-            <div class="work-card-arrow">↗</div>
-          </div>
-        </a>
-
-        <!-- Card 3: Talk to Me -->
-        <a href="Portfolio/UIUX/UX_TTM.html" class="work-card fade-up" data-project="ux_ttm">
-          <img src="assets/img/portfolio/UIUX/UIX-TTM/UI_TTM0.png" alt="Talk to Me">
-          <div class="work-card-overlay"></div>
-          <div class="work-card-content">
-            <div>
-              <p class="work-card-title">Talk to Me: Design Thinking for Talk Therapy Service</p>
-              <p class="work-card-tags">#UXResearch · #ServiceDesign</p>
-            </div>
-            <div class="work-card-arrow">↗</div>
-          </div>
-        </a>
-
-        <!-- Card 4: Gravity is Your Enemy -->
-        <a href="Portfolio/IXD/IXD_GIY.html" class="work-card fade-up" data-project="ixd_giy">
-          <img src="assets/img/portfolio/IXD/GIY/GIY00.png" alt="Gravity is Your Enemy">
-          <div class="work-card-overlay"></div>
-          <div class="work-card-content">
-            <div>
-              <p class="work-card-title">Gravity is Your Enemy!</p>
-              <p class="work-card-tags">#GameDesign · #InteractionDesign</p>
-            </div>
-            <div class="work-card-arrow">↗</div>
-          </div>
-        </a>
-
-        <!-- Card 5: Neuro UI Design -->
-        <a href="https://www.figma.com/community/file/1400784424249071053" class="work-card fade-up" target="_blank"
-          rel="noopener" data-project="neuro">
-          <img src="assets/img/portfolio/UIUX/UIX-Neuro/UI_N0.png" alt="Neurodevelopmental Assessment UI">
-          <div class="work-card-overlay"></div>
-          <div class="work-card-content">
-            <div>
-              <p class="work-card-title">Neurodevelopmental Adaptive Assessment & Tracking System</p>
-              <p class="work-card-tags">#UI/UX · #HealthTech</p>
-            </div>
-            <div class="work-card-arrow">↗</div>
-          </div>
-        </a>
-
-        <!-- Card 6: VR Collaboration -->
-        <a href="Portfolio/AI&DATA/AI_VREV.html" class="work-card fade-up" data-project="ai_vrev">
-          <img src="assets/img/portfolio/AIDATA/AD-VREV/AD_VREV0.png" alt="VR Collaboration">
-          <div class="work-card-overlay"></div>
-          <div class="work-card-content">
-            <div>
-              <p class="work-card-title">Collaborative VR Mind Mapping with Sentiment Analysis</p>
-              <p class="work-card-tags">#VR · #NLP · #EmotionalIntelligence</p>
-            </div>
-            <div class="work-card-arrow">↗</div>
-          </div>
-        </a>
-      </div>
-
-      <!-- View All Button -->
-      <div class="work-view-all fade-up">
-        <button id="toggle-portfolio" class="btn-outline" style="margin-top: 16px;">View All Work →</button>
-      </div>
-
-      <!-- Full Portfolio (hidden by default) -->
-      <div id="portfolio-full" class="portfolio-full" style="display: none;">
+      <div id="portfolio-full" class="portfolio-full">
         <div class="portfolio-filters">
           <button class="portfolio-filter-btn active" data-filter="all">All</button>
           <button class="portfolio-filter-btn" data-filter="aidata">AI & Data</button>
@@ -280,70 +192,9 @@
           <button class="portfolio-filter-btn" data-filter="vp">Videography</button>
         </div>
 
-        <div class="portfolio-grid stagger">
-          <!-- AI & Data -->
-          <div class="portfolio-item fade-up" data-category="aidata">
-            <a href="Portfolio/AI&DATA/AI_TABC.html" data-project="ai_tabc">
-              <img src="assets/img/portfolio/AIDATA/AD-TABC/AD_TABC0.png" alt="AI REITs Platform">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">AI REITs Platform</p>
-                <p class="portfolio-item-tag">#AIGC #NLP #LLM</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="aidata ixd">
-            <a href="Portfolio/AI&DATA/AI_VRGSR.html" data-project="ai_vrgsr">
-              <img src="assets/img/portfolio/AIDATA/AD-VRGSR/AD_VRGSR0.png" alt="VR Spatial Reasoning">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">VR Spatial-Reasoning Perception</p>
-                <p class="portfolio-item-tag">#VR #IxD</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="aidata ixd">
-            <a href="Portfolio/AI&DATA/AI_VREV.html" data-project="ai_vrev">
-              <img src="assets/img/portfolio/AIDATA/AD-VREV/AD_VREV0.png" alt="VR Collaboration">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Collaborative VR Mind Mapping</p>
-                <p class="portfolio-item-tag">#VR #NLP</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="aidata">
-            <a href="Portfolio/UIUX/UX_360.html" data-project="ux_360">
-              <img src="assets/img/portfolio/AIDATA/AD-360/AD_3600.png" alt="360 Drowning Detection">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">360° Camera Drowning Detection</p>
-                <p class="portfolio-item-tag">#UX #Research</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="aidata">
-            <a href="Portfolio/UIUX/UX_ML.html" data-project="ux_ml">
-              <img src="assets/img/portfolio/AIDATA/AD-Car/AD-C0.png" alt="Image Classification">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Image Classification in Design Research</p>
-                <p class="portfolio-item-tag">#ML #Classification</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux aidata">
-            <a href="Portfolio/AI&DATA/AI_COMP.html" data-project="ai_comp">
-              <img src="assets/img/portfolio/AIDATA/AD-NTUTInteractivity/AD_N0.png" alt="NTUT Interactivity">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Campus Interactivity Comparison Study</p>
-                <p class="portfolio-item-tag">#UrbanAnalysis</p>
-              </div>
-            </a>
-          </div>
-
-          <!-- AI & Data: code projects (GitHub / Hugging Face) -->
-          <div class="portfolio-item fade-up" data-category="aidata teach">
+        <div class="portfolio-grid stagger" data-show="6" data-show-mobile="4">
+          <div class="portfolio-item fade-up" data-date="2026-10" data-category="aidata teach">
+            <span class="portfolio-item-year">2026</span>
             <a href="https://github.com/ainulyaqinmhd/vlmAgentWorkshop" target="_blank" rel="noopener"
               data-project="vpa">
               <div class="portfolio-cover has-photo"
@@ -359,332 +210,8 @@
             </a>
           </div>
 
-          <div class="portfolio-item fade-up" data-category="aidata">
-            <a href="https://huggingface.co/spaces/ainulyaqinmhd/SpatialReasoning" target="_blank" rel="noopener"
-              data-project="mma">
-              <div class="portfolio-cover has-photo"
-                style="background-image: url('assets/img/portfolio/AIDATA/AD-MMA/mma.jpg');">
-                <span class="portfolio-cover-cat">AI &amp; Data</span>
-                <span class="portfolio-cover-title">Multimodal AI Agent: Image + Text + Voice</span>
-                <span class="portfolio-cover-src">🤗 Hugging Face</span>
-              </div>
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Try on Hugging Face ↗</p>
-                <p class="portfolio-item-tag">#Multimodal #Speech #Gradio</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="aidata">
-            <a href="https://github.com/ainulyaqinmhd/Web-RAG-Agent" target="_blank" rel="noopener" data-project="wrag">
-              <div class="portfolio-cover has-photo"
-                style="background-image: url('assets/img/portfolio/AIDATA/AD-WRAG/wrag.jpg');">
-                <span class="portfolio-cover-cat">AI &amp; Data</span>
-                <span class="portfolio-cover-title">Web RAG Agent: Chat with Any Webpage</span>
-                <span class="portfolio-cover-src"><i class="bi bi-github"></i> GitHub</span>
-              </div>
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">View on GitHub ↗</p>
-                <p class="portfolio-item-tag">#RAG #Llama #LangChain</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="aidata">
-            <a href="https://github.com/ainulyaqinmhd/Local-Chabot-RAG" target="_blank" rel="noopener"
-              data-project="lrag">
-              <div class="portfolio-cover has-photo"
-                style="background-image: url('assets/img/portfolio/AIDATA/AD-LRAG/lrag.jpg');">
-                <span class="portfolio-cover-cat">AI &amp; Data</span>
-                <span class="portfolio-cover-title">Local RAG Chatbot for Private Documents</span>
-                <span class="portfolio-cover-src"><i class="bi bi-github"></i> GitHub</span>
-              </div>
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">View on GitHub ↗</p>
-                <p class="portfolio-item-tag">#RAG #LocalLLM #Chroma</p>
-              </div>
-            </a>
-          </div>
-
-          <!-- Interaction Design -->
-          <div class="portfolio-item fade-up" data-category="ixd ux">
-            <a href="Portfolio/IXD/IXD_GIY.html" data-project="ixd_giy">
-              <img src="assets/img/portfolio/IXD/GIY/GIY00.png" alt="Gravity is Your Enemy">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Gravity is Your Enemy!</p>
-                <p class="portfolio-item-tag">#GameDesign #IxD</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ixd ux">
-            <a href="Portfolio/IXD/IXD_MAR.html" data-project="ixd_mar">
-              <img src="assets/img/portfolio/IXD/MarioAR/MAR00.png" alt="Super Mario AR">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Super Mario Cards AR</p>
-                <p class="portfolio-item-tag">#GameDesign #AR</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ixd ux">
-            <a href="https://ainulyaqinmhd.github.io/dadaochengwebvr/" target="_blank" rel="noopener"
-              data-project="webvr">
-              <div class="portfolio-cover has-photo"
-                style="background-image: url('assets/img/portfolio/IXD/WebVR/webvr.jpg');">
-                <span class="portfolio-cover-cat">Interaction Design</span>
-                <span class="portfolio-cover-title">WebVR Virtual Tours: Dadaocheng & Taipei City</span>
-                <span class="portfolio-cover-src"><i class="bi bi-box-arrow-up-right"></i> Live Demo</span>
-              </div>
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Open Live Demo ↗</p>
-                <p class="portfolio-item-tag">#WebVR #CulturalHeritage</p>
-              </div>
-            </a>
-          </div>
-
-          <!-- UX -->
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="Portfolio/UIUX/UX_SHT.html" data-project="ux_sht">
-              <img src="assets/img/portfolio/UIUX/UIX-SHT/UI_SHT0.png" alt="Smart Mobile Shelter">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Smart Mobile Shelter Service Design</p>
-                <p class="portfolio-item-tag">#ServiceDesign</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="Portfolio/UIUX/UX_TTM.html" data-project="ux_ttm">
-              <img src="assets/img/portfolio/UIUX/UIX-TTM/UI_TTM0.png" alt="Talk to Me">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Talk to Me: Talk Therapy Service</p>
-                <p class="portfolio-item-tag">#DesignThinking</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="Portfolio/UIUX/UX_Gecko.html" data-project="ux_gecko">
-              <img src="assets/img/portfolio/UIUX/UIX-Gecko/Gecko00.png" alt="Gecko Eyes Biomimicry">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Gecko Eyes Night Vision Biomimicry</p>
-                <p class="portfolio-item-tag">#Biomimicry</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="Portfolio/UIUX/UX_DTSDG.html" data-project="ux_dtsdg">
-              <img src="assets/img/portfolio/UIUX/UIX-DTSDG/DTSDG00.png" alt="Digital Transformation SDGs">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Digital Transformation & SDGs in Smart City</p>
-                <p class="portfolio-item-tag">#SmartCity</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="https://www.figma.com/community/file/1400784424249071053" target="_blank" data-project="neuro">
-              <img src="assets/img/portfolio/UIUX/UIX-Neuro/UI_N0.png" alt="Neuro Assessment UI">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Neurodevelopmental Assessment UI</p>
-                <p class="portfolio-item-tag">#UI/UX</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux aidata">
-            <a href="Portfolio/UIUX/UX_Crowdsourcing.html" data-project="ux_crowdsourcing">
-              <img src="assets/img/portfolio/UIUX/UIX-Crowdsourcing/UI_C.png" alt="Crowdsourcing Geo-Decision">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Crowdsourcing Geo-Decision Maker</p>
-                <p class="portfolio-item-tag">#SmartCity #ServiceDesign</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="Portfolio/UIUX/UX_SPHealth.html" data-project="ux_sphealth">
-              <img src="assets/img/portfolio/UIUX/UIX-SpH/UI_SPH0.png" alt="Self-Health Monitoring">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Speculative Self-Health Monitoring Patch</p>
-                <p class="portfolio-item-tag">#SpeculativeDesign</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="Portfolio/UIUX/UX_SPNoise.html" data-project="ux_spnoise">
-              <img src="assets/img/portfolio/UIUX/UIX-SpN/UI_SPN0.png" alt="Noise Awareness">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Speculative Design for Noise Awareness</p>
-                <p class="portfolio-item-tag">#SpeculativeDesign</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="Portfolio/UIUX/UX_VPet.html" data-project="ux_vpet">
-              <img src="assets/img/portfolio/UIUX/UIX-Vpet/UI_VP0.png" alt="Virtual Pet Embodiment">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Virtual Pet Embodiment with ML</p>
-                <p class="portfolio-item-tag">#HCI #ML</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="ux">
-            <a href="Portfolio/UIUX/UX_VEmbodiment.html" data-project="ux_vembodiment">
-              <img src="assets/img/portfolio/UIUX/UIX-1/UI-0.png" alt="Virtual Tour Guide">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Virtual Embodiment Tour Guide (WEB-AR)</p>
-                <p class="portfolio-item-tag">#WebAR #UX</p>
-              </div>
-            </a>
-          </div>
-
-          <!-- Teaching -->
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_FP_sp25.html" data-project="ta_fp_sp25">
-              <img src="assets/img/portfolio/TA/TA_FP_SP25/TA_FP_SP2500.png" alt="Future-proof Portfolios">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Future-proof Portfolios: Generative AI</p>
-                <p class="portfolio-item-tag">University</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_HCID_sp25.html" data-project="ta_hcid_sp25">
-              <img src="assets/img/portfolio/TA/TA_HCID_SP25/TA_HCID_SP25.png" alt="HCID">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Human-Computer Interaction Design</p>
-                <p class="portfolio-item-tag">University</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_HCID.html" data-project="ta_hcid">
-              <img src="assets/img/portfolio/TA/TA_HCID/TA_HCID00.png" alt="HCI Design">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Human-Computer Interaction Design</p>
-                <p class="portfolio-item-tag">University</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_SCI.html" data-project="ta_sci">
-              <img src="assets/img/portfolio/TA/TA_SCI/TA_SCI00.png" alt="Smart City">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Smart City and Interactivity</p>
-                <p class="portfolio-item-tag">University</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_DT.html" data-project="ta_dt">
-              <img src="assets/img/portfolio/TA/TA_DT/TA_DT00.png" alt="Design Thinking">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Design Thinking</p>
-                <p class="portfolio-item-tag">University</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_DM.html" data-project="ta_dm">
-              <img src="assets/img/portfolio/TA/TA_DM/TA_DM00.png" alt="Design Methods">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Design Method - Prototyping for Designer</p>
-                <p class="portfolio-item-tag">University</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_VRG.html" data-project="ta_vrg">
-              <img src="assets/img/portfolio/TA/TA_VRG/TA_VRG00.png" alt="VR Game Design">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">VR Game Design</p>
-                <p class="portfolio-item-tag">K-12 Education</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_ElectroSP22.html" data-project="ta_electrosp22">
-              <img src="assets/img/portfolio/TA/TA_ElectronicSP22/elSP22_0.png" alt="Electronics">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Electronic Circuits & Programming</p>
-                <p class="portfolio-item-tag">K-12 Education</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="teach">
-            <a href="Portfolio/TA/TA_ArduinoSP22.html" data-project="ta_arduinosp22">
-              <img src="assets/img/portfolio/TA/TA_ArduinoSP22/arSP22_00.png" alt="Arduino">
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Fundamental of Arduino</p>
-                <p class="portfolio-item-tag">K-12 Education</p>
-              </div>
-            </a>
-          </div>
-
-          <!-- Community Tools (LFNU / PCINU Taiwan) -->
-          <div class="portfolio-item fade-up" data-category="tools">
-            <a href="https://huggingface.co/spaces/ainulyaqinmhd/EphemerisLFNUTaiwan" target="_blank" rel="noopener"
-              data-project="ephemeris">
-              <div class="portfolio-cover has-photo"
-                style="background-image: url('assets/img/portfolio/TOOLS/Ephemeris/ephemeris.jpg');">
-                <span class="portfolio-cover-cat">Community Tools</span>
-                <span class="portfolio-cover-title">Hisab Ephemeris: Moon &amp; Sun Positions</span>
-                <span class="portfolio-cover-src">🤗 Hugging Face</span>
-              </div>
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Try on Hugging Face ↗</p>
-                <p class="portfolio-item-tag">#Astronomy #Gradio #LFNUTaiwan</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="tools">
-            <a href="https://huggingface.co/spaces/ainulyaqinmhd/Hisab-Gerhana-LFNUTaiwan" target="_blank"
-              rel="noopener" data-project="gerhana">
-              <div class="portfolio-cover has-photo"
-                style="background-image: url('assets/img/portfolio/TOOLS/Gerhana/gerhana.jpg');">
-                <span class="portfolio-cover-cat">Community Tools</span>
-                <span class="portfolio-cover-title">Hisab Gerhana: Eclipse Calculator</span>
-                <span class="portfolio-cover-src">🤗 Hugging Face</span>
-              </div>
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Try on Hugging Face ↗</p>
-                <p class="portfolio-item-tag">#Astronomy #Visualization</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="tools">
-            <a href="https://ainulyaqinmhd.github.io/KalendarLFNUTaiwan/" target="_blank" rel="noopener"
-              data-project="kalender">
-              <div class="portfolio-cover has-photo"
-                style="background-image: url('assets/img/portfolio/TOOLS/Kalender/kalender.jpg');">
-                <span class="portfolio-cover-cat">Community Tools</span>
-                <span class="portfolio-cover-title">Unified Gregorian &amp; Hijri Calendar</span>
-                <span class="portfolio-cover-src"><i class="bi bi-box-arrow-up-right"></i> Live Demo</span>
-              </div>
-              <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Open Live Demo ↗</p>
-                <p class="portfolio-item-tag">#WebApp #Calendar</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="portfolio-item fade-up" data-category="tools">
+          <div class="portfolio-item fade-up" data-date="2026-04" data-category="tools">
+            <span class="portfolio-item-year">2026</span>
             <a href="https://ainulyaqinmhd.github.io/jadwalsalattaiwan/" target="_blank" rel="noopener"
               data-project="salat">
               <div class="portfolio-cover has-photo"
@@ -701,38 +228,175 @@
             </a>
           </div>
 
-          <!-- Videography -->
-          <div class="portfolio-item fade-up" data-category="vp">
-            <a href="https://youtu.be/5_fI3ZKxnnc" target="_blank" data-project="video-5_fi3zkxnnc">
-              <img src="assets/img/portfolio/Video/CLTC.png" alt="Chinese Learning NTUT">
+          <div class="portfolio-item fade-up" data-date="2026-02" data-category="tools">
+            <span class="portfolio-item-year">2026</span>
+            <a href="https://huggingface.co/spaces/ainulyaqinmhd/Hisab-Gerhana-LFNUTaiwan" target="_blank"
+              rel="noopener" data-project="gerhana">
+              <div class="portfolio-cover has-photo"
+                style="background-image: url('assets/img/portfolio/TOOLS/Gerhana/gerhana.jpg');">
+                <span class="portfolio-cover-cat">Community Tools</span>
+                <span class="portfolio-cover-title">Hisab Gerhana: Eclipse Calculator</span>
+                <span class="portfolio-cover-src">🤗 Hugging Face</span>
+              </div>
               <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Chinese Learning with NTUT CLTC</p>
-                <p class="portfolio-item-tag">#VideoFeature</p>
+                <p class="portfolio-item-title">Try on Hugging Face ↗</p>
+                <p class="portfolio-item-tag">#Astronomy #Visualization</p>
               </div>
             </a>
           </div>
 
-          <div class="portfolio-item fade-up" data-category="vp">
-            <a href="https://youtu.be/Y3NS8C4lLo0" target="_blank" data-project="video-y3ns8c4llo0">
-              <img src="assets/img/portfolio/Video/TTM.png" alt="Talk to Me Video">
+          <div class="portfolio-item fade-up" data-date="2025-12" data-category="tools">
+            <span class="portfolio-item-year">2025</span>
+            <a href="https://huggingface.co/spaces/ainulyaqinmhd/EphemerisLFNUTaiwan" target="_blank" rel="noopener"
+              data-project="ephemeris">
+              <div class="portfolio-cover has-photo"
+                style="background-image: url('assets/img/portfolio/TOOLS/Ephemeris/ephemeris.jpg');">
+                <span class="portfolio-cover-cat">Community Tools</span>
+                <span class="portfolio-cover-title">Hisab Ephemeris: Moon &amp; Sun Positions</span>
+                <span class="portfolio-cover-src">🤗 Hugging Face</span>
+              </div>
               <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Talk to Me - Embrace Your Anxiety</p>
-                <p class="portfolio-item-tag">#VideoFeature</p>
+                <p class="portfolio-item-title">Try on Hugging Face ↗</p>
+                <p class="portfolio-item-tag">#Astronomy #Gradio #LFNUTaiwan</p>
               </div>
             </a>
           </div>
 
-          <div class="portfolio-item fade-up" data-category="vp">
-            <a href="https://vimeo.com/947730439?share=copy" target="_blank" data-project="video-947730439">
-              <img src="assets/img/portfolio/Video/webxr.png" alt="Virtual XR">
+          <div class="portfolio-item fade-up" data-date="2025-07" data-category="aidata">
+            <span class="portfolio-item-year">2025</span>
+            <a href="https://github.com/ainulyaqinmhd/Web-RAG-Agent" target="_blank" rel="noopener" data-project="wrag">
+              <div class="portfolio-cover has-photo"
+                style="background-image: url('assets/img/portfolio/AIDATA/AD-WRAG/wrag.jpg');">
+                <span class="portfolio-cover-cat">AI &amp; Data</span>
+                <span class="portfolio-cover-title">Web RAG Agent: Chat with Any Webpage</span>
+                <span class="portfolio-cover-src"><i class="bi bi-github"></i> GitHub</span>
+              </div>
               <div class="portfolio-item-overlay">
-                <p class="portfolio-item-title">Virtual XR for Emotional Intelligence</p>
-                <p class="portfolio-item-tag">#VideoFeature</p>
+                <p class="portfolio-item-title">View on GitHub ↗</p>
+                <p class="portfolio-item-tag">#RAG #Llama #LangChain</p>
               </div>
             </a>
           </div>
 
-          <div class="portfolio-item fade-up" data-category="vp">
+          <div class="portfolio-item fade-up" data-date="2025-04" data-category="aidata">
+            <span class="portfolio-item-year">2025</span>
+            <a href="https://huggingface.co/spaces/ainulyaqinmhd/SpatialReasoning" target="_blank" rel="noopener"
+              data-project="mma">
+              <div class="portfolio-cover has-photo"
+                style="background-image: url('assets/img/portfolio/AIDATA/AD-MMA/mma.jpg');">
+                <span class="portfolio-cover-cat">AI &amp; Data</span>
+                <span class="portfolio-cover-title">Multimodal AI Agent: Image + Text + Voice</span>
+                <span class="portfolio-cover-src">🤗 Hugging Face</span>
+              </div>
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Try on Hugging Face ↗</p>
+                <p class="portfolio-item-tag">#Multimodal #Speech #Gradio</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2025-03" data-category="teach">
+            <span class="portfolio-item-year">2025</span>
+            <a href="Portfolio/TA/TA_FP_sp25.html" data-project="ta_fp_sp25">
+              <img src="assets/img/portfolio/TA/TA_FP_SP25/TA_FP_SP2500.png" alt="Future-proof Portfolios">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Future-proof Portfolios: Generative AI</p>
+                <p class="portfolio-item-tag">University</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2025-02" data-category="teach">
+            <span class="portfolio-item-year">2025</span>
+            <a href="Portfolio/TA/TA_HCID_sp25.html" data-project="ta_hcid_sp25">
+              <img src="assets/img/portfolio/TA/TA_HCID_SP25/TA_HCID_SP25.png" alt="HCID">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Human-Computer Interaction Design</p>
+                <p class="portfolio-item-tag">University</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2025-01" data-category="tools">
+            <span class="portfolio-item-year">2025</span>
+            <a href="https://ainulyaqinmhd.github.io/KalendarLFNUTaiwan/" target="_blank" rel="noopener"
+              data-project="kalender">
+              <div class="portfolio-cover has-photo"
+                style="background-image: url('assets/img/portfolio/TOOLS/Kalender/kalender.jpg');">
+                <span class="portfolio-cover-cat">Community Tools</span>
+                <span class="portfolio-cover-title">Unified Gregorian &amp; Hijri Calendar</span>
+                <span class="portfolio-cover-src"><i class="bi bi-box-arrow-up-right"></i> Live Demo</span>
+              </div>
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Open Live Demo ↗</p>
+                <p class="portfolio-item-tag">#WebApp #Calendar</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2024-09" data-category="teach">
+            <span class="portfolio-item-year">2024</span>
+            <a href="Portfolio/TA/TA_DT.html" data-project="ta_dt">
+              <img src="assets/img/portfolio/TA/TA_DT/TA_DT00.png" alt="Design Thinking">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Design Thinking</p>
+                <p class="portfolio-item-tag">University</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2024-08" data-category="ux">
+            <span class="portfolio-item-year">2024</span>
+            <a href="https://www.figma.com/community/file/1400784424249071053" target="_blank" data-project="neuro">
+              <img src="assets/img/portfolio/UIUX/UIX-Neuro/UI_N0.png" alt="Neuro Assessment UI">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Neurodevelopmental Assessment UI</p>
+                <p class="portfolio-item-tag">#UI/UX</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2024-07" data-category="aidata">
+            <span class="portfolio-item-year">2024</span>
+            <a href="Portfolio/AI&DATA/AI_TABC.html" data-project="ai_tabc">
+              <img src="assets/img/portfolio/AIDATA/AD-TABC/AD_TABC0.png" alt="AI REITs Platform">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">AI REITs Platform</p>
+                <p class="portfolio-item-tag">#AIGC #NLP #LLM</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2024-07" data-category="aidata">
+            <span class="portfolio-item-year">2024</span>
+            <a href="https://github.com/ainulyaqinmhd/Local-Chabot-RAG" target="_blank" rel="noopener"
+              data-project="lrag">
+              <div class="portfolio-cover has-photo"
+                style="background-image: url('assets/img/portfolio/AIDATA/AD-LRAG/lrag.jpg');">
+                <span class="portfolio-cover-cat">AI &amp; Data</span>
+                <span class="portfolio-cover-title">Local RAG Chatbot for Private Documents</span>
+                <span class="portfolio-cover-src"><i class="bi bi-github"></i> GitHub</span>
+              </div>
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">View on GitHub ↗</p>
+                <p class="portfolio-item-tag">#RAG #LocalLLM #Chroma</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2024-06" data-category="aidata ixd">
+            <span class="portfolio-item-year">2024</span>
+            <a href="Portfolio/AI&DATA/AI_VRGSR.html" data-project="ai_vrgsr">
+              <img src="assets/img/portfolio/AIDATA/AD-VRGSR/AD_VRGSR0.png" alt="VR Spatial Reasoning">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">VR Spatial-Reasoning Perception</p>
+                <p class="portfolio-item-tag">#VR #IxD</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2024-05" data-category="vp">
+            <span class="portfolio-item-year">2024</span>
             <a href="https://vimeo.com/947729721?share=copy" target="_blank" data-project="video-947729721">
               <img src="assets/img/portfolio/Video/IDG.png" alt="Indigo Dyeing">
               <div class="portfolio-item-overlay">
@@ -742,7 +406,223 @@
             </a>
           </div>
 
-          <div class="portfolio-item fade-up" data-category="vp">
+          <div class="portfolio-item fade-up" data-date="2024-03" data-category="ixd ux">
+            <span class="portfolio-item-year">2024</span>
+            <a href="Portfolio/IXD/IXD_GIY.html" data-project="ixd_giy">
+              <img src="assets/img/portfolio/IXD/GIY/GIY00.png" alt="Gravity is Your Enemy">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Gravity is Your Enemy!</p>
+                <p class="portfolio-item-tag">#GameDesign #IxD</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2024-02" data-category="ixd ux">
+            <span class="portfolio-item-year">2024</span>
+            <a href="Portfolio/IXD/IXD_MAR.html" data-project="ixd_mar">
+              <img src="assets/img/portfolio/IXD/MarioAR/MAR00.png" alt="Super Mario AR">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Super Mario Cards AR</p>
+                <p class="portfolio-item-tag">#GameDesign #AR</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2023-09" data-category="teach">
+            <span class="portfolio-item-year">2023</span>
+            <a href="Portfolio/TA/TA_HCID.html" data-project="ta_hcid">
+              <img src="assets/img/portfolio/TA/TA_HCID/TA_HCID00.png" alt="HCI Design">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Human-Computer Interaction Design</p>
+                <p class="portfolio-item-tag">University</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2023-06" data-category="ux aidata">
+            <span class="portfolio-item-year">2023</span>
+            <a href="Portfolio/UIUX/UX_Crowdsourcing.html" data-project="ux_crowdsourcing">
+              <img src="assets/img/portfolio/UIUX/UIX-Crowdsourcing/UI_C.png" alt="Crowdsourcing Geo-Decision">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Crowdsourcing Geo-Decision Maker</p>
+                <p class="portfolio-item-tag">#SmartCity #ServiceDesign</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2023-03" data-category="ux aidata">
+            <span class="portfolio-item-year">2023</span>
+            <a href="Portfolio/AI&DATA/AI_COMP.html" data-project="ai_comp">
+              <img src="assets/img/portfolio/AIDATA/AD-NTUTInteractivity/AD_N0.png" alt="NTUT Interactivity">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Campus Interactivity Comparison Study</p>
+                <p class="portfolio-item-tag">#UrbanAnalysis</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-09" data-category="teach">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/TA/TA_SCI.html" data-project="ta_sci">
+              <img src="assets/img/portfolio/TA/TA_SCI/TA_SCI00.png" alt="Smart City">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Smart City and Interactivity</p>
+                <p class="portfolio-item-tag">University</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-09" data-category="teach">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/TA/TA_VRG.html" data-project="ta_vrg">
+              <img src="assets/img/portfolio/TA/TA_VRG/TA_VRG00.png" alt="VR Game Design">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">VR Game Design</p>
+                <p class="portfolio-item-tag">K-12 Education</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-07" data-category="aidata ixd">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/AI&DATA/AI_VREV.html" data-project="ai_vrev">
+              <img src="assets/img/portfolio/AIDATA/AD-VREV/AD_VREV0.png" alt="VR Collaboration">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Collaborative VR Mind Mapping</p>
+                <p class="portfolio-item-tag">#VR #NLP</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-06" data-category="ux">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/UIUX/UX_TTM.html" data-project="ux_ttm">
+              <img src="assets/img/portfolio/UIUX/UIX-TTM/UI_TTM0.png" alt="Talk to Me">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Talk to Me: Talk Therapy Service</p>
+                <p class="portfolio-item-tag">#DesignThinking</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-06" data-category="vp">
+            <span class="portfolio-item-year">2022</span>
+            <a href="https://youtu.be/Y3NS8C4lLo0" target="_blank" data-project="video-y3ns8c4llo0">
+              <img src="assets/img/portfolio/Video/TTM.png" alt="Talk to Me Video">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Talk to Me - Embrace Your Anxiety</p>
+                <p class="portfolio-item-tag">#VideoFeature</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-05" data-category="ux">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/UIUX/UX_DTSDG.html" data-project="ux_dtsdg">
+              <img src="assets/img/portfolio/UIUX/UIX-DTSDG/DTSDG00.png" alt="Digital Transformation SDGs">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Digital Transformation & SDGs in Smart City</p>
+                <p class="portfolio-item-tag">#SmartCity</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-04" data-category="aidata">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/UIUX/UX_ML.html" data-project="ux_ml">
+              <img src="assets/img/portfolio/AIDATA/AD-Car/AD-C0.png" alt="Image Classification">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Image Classification in Design Research</p>
+                <p class="portfolio-item-tag">#ML #Classification</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-04" data-category="ixd ux">
+            <span class="portfolio-item-year">2022</span>
+            <a href="https://ainulyaqinmhd.github.io/dadaochengwebvr/" target="_blank" rel="noopener"
+              data-project="webvr">
+              <div class="portfolio-cover has-photo"
+                style="background-image: url('assets/img/portfolio/IXD/WebVR/webvr.jpg');">
+                <span class="portfolio-cover-cat">Interaction Design</span>
+                <span class="portfolio-cover-title">WebVR Virtual Tours: Dadaocheng & Taipei City</span>
+                <span class="portfolio-cover-src"><i class="bi bi-box-arrow-up-right"></i> Live Demo</span>
+              </div>
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Open Live Demo ↗</p>
+                <p class="portfolio-item-tag">#WebVR #CulturalHeritage</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-04" data-category="vp">
+            <span class="portfolio-item-year">2022</span>
+            <a href="https://vimeo.com/947730439?share=copy" target="_blank" data-project="video-947730439">
+              <img src="assets/img/portfolio/Video/webxr.png" alt="Virtual XR">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Virtual XR for Emotional Intelligence</p>
+                <p class="portfolio-item-tag">#VideoFeature</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-03" data-category="teach">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/TA/TA_DM.html" data-project="ta_dm">
+              <img src="assets/img/portfolio/TA/TA_DM/TA_DM00.png" alt="Design Methods">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Design Method - Prototyping for Designer</p>
+                <p class="portfolio-item-tag">University</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-02" data-category="teach">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/TA/TA_ElectroSP22.html" data-project="ta_electrosp22">
+              <img src="assets/img/portfolio/TA/TA_ElectronicSP22/elSP22_0.png" alt="Electronics">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Electronic Circuits & Programming</p>
+                <p class="portfolio-item-tag">K-12 Education</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2022-02" data-category="teach">
+            <span class="portfolio-item-year">2022</span>
+            <a href="Portfolio/TA/TA_ArduinoSP22.html" data-project="ta_arduinosp22">
+              <img src="assets/img/portfolio/TA/TA_ArduinoSP22/arSP22_00.png" alt="Arduino">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Fundamental of Arduino</p>
+                <p class="portfolio-item-tag">K-12 Education</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2021-09" data-category="vp">
+            <span class="portfolio-item-year">2021</span>
+            <a href="https://youtu.be/5_fI3ZKxnnc" target="_blank" data-project="video-5_fi3zkxnnc">
+              <img src="assets/img/portfolio/Video/CLTC.png" alt="Chinese Learning NTUT">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Chinese Learning with NTUT CLTC</p>
+                <p class="portfolio-item-tag">#VideoFeature</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2020-12" data-category="aidata">
+            <span class="portfolio-item-year">2020</span>
+            <a href="Portfolio/UIUX/UX_360.html" data-project="ux_360">
+              <img src="assets/img/portfolio/AIDATA/AD-360/AD_3600.png" alt="360 Drowning Detection">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">360° Camera Drowning Detection</p>
+                <p class="portfolio-item-tag">#UX #Research</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2020-10" data-category="vp">
+            <span class="portfolio-item-year">2020</span>
             <a href="https://youtu.be/o9P8H-0AuJo" target="_blank" data-project="video-o9p8h-0aujo">
               <img src="assets/img/portfolio/Video/ICHOS.png" alt="ICHOS">
               <div class="portfolio-item-overlay">
@@ -752,12 +632,79 @@
             </a>
           </div>
 
-          <div class="portfolio-item fade-up" data-category="vp">
+          <div class="portfolio-item fade-up" data-date="2020-09" data-category="ux">
+            <span class="portfolio-item-year">2020</span>
+            <a href="Portfolio/UIUX/UX_VEmbodiment.html" data-project="ux_vembodiment">
+              <img src="assets/img/portfolio/UIUX/UIX-1/UI-0.png" alt="Virtual Tour Guide">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Virtual Embodiment Tour Guide (WEB-AR)</p>
+                <p class="portfolio-item-tag">#WebAR #UX</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2020-07" data-category="vp">
+            <span class="portfolio-item-year">2020</span>
             <a href="https://youtu.be/jKJ3ozoIY3g" target="_blank" data-project="video-jkj3ozoiy3g">
               <img src="assets/img/portfolio/Video/RDT.png" alt="Religious Diversity">
               <div class="portfolio-item-overlay">
                 <p class="portfolio-item-title">Religious Diversity in Taiwan</p>
                 <p class="portfolio-item-tag">#ShortVideo</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2020-06" data-category="ux">
+            <span class="portfolio-item-year">2020</span>
+            <a href="Portfolio/UIUX/UX_SPNoise.html" data-project="ux_spnoise">
+              <img src="assets/img/portfolio/UIUX/UIX-SpN/UI_SPN0.png" alt="Noise Awareness">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Speculative Design for Noise Awareness</p>
+                <p class="portfolio-item-tag">#SpeculativeDesign</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2020-06" data-category="ux">
+            <span class="portfolio-item-year">2020</span>
+            <a href="Portfolio/UIUX/UX_VPet.html" data-project="ux_vpet">
+              <img src="assets/img/portfolio/UIUX/UIX-Vpet/UI_VP0.png" alt="Virtual Pet Embodiment">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Virtual Pet Embodiment with ML</p>
+                <p class="portfolio-item-tag">#HCI #ML</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2020-05" data-category="ux">
+            <span class="portfolio-item-year">2020</span>
+            <a href="Portfolio/UIUX/UX_SHT.html" data-project="ux_sht">
+              <img src="assets/img/portfolio/UIUX/UIX-SHT/UI_SHT0.png" alt="Smart Mobile Shelter">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Smart Mobile Shelter Service Design</p>
+                <p class="portfolio-item-tag">#ServiceDesign</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2020-04" data-category="ux">
+            <span class="portfolio-item-year">2020</span>
+            <a href="Portfolio/UIUX/UX_Gecko.html" data-project="ux_gecko">
+              <img src="assets/img/portfolio/UIUX/UIX-Gecko/Gecko00.png" alt="Gecko Eyes Biomimicry">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Gecko Eyes Night Vision Biomimicry</p>
+                <p class="portfolio-item-tag">#Biomimicry</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="portfolio-item fade-up" data-date="2020-02" data-category="ux">
+            <span class="portfolio-item-year">2020</span>
+            <a href="Portfolio/UIUX/UX_SPHealth.html" data-project="ux_sphealth">
+              <img src="assets/img/portfolio/UIUX/UIX-SpH/UI_SPH0.png" alt="Self-Health Monitoring">
+              <div class="portfolio-item-overlay">
+                <p class="portfolio-item-title">Speculative Self-Health Monitoring Patch</p>
+                <p class="portfolio-item-tag">#SpeculativeDesign</p>
               </div>
             </a>
           </div>
@@ -1216,51 +1163,63 @@
         <a href="blog.html" class="btn-outline" style="margin-bottom: 8px;">All Posts →</a>
       </div>
 
-      <div class="blog-grid">
-        <a href="blog/how-ai-changes-ux-research.html" class="blog-card fade-up">
+      <div class="blog-grid" data-show="3">
+        <a href="blog/esg-sdg-sustainable-industrial-development.html" class="blog-card fade-up">
           <div class="blog-card-img">
-            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80" alt="AI and UX Research">
+            <img src="assets/img/blog/esg-sdg-sustainable-industrial-development/01.png" alt="ESG and SDG: Paving the Way for Sustainable Industrial Development" loading="lazy">
           </div>
           <div class="blog-card-body">
-            <p class="blog-card-category">Research</p>
-            <h3 class="blog-card-title">How AI is Changing the Way We Do UX Research</h3>
-            <p class="blog-card-excerpt">From automated sentiment analysis to AI-driven user clustering — exploring how
-              NLP tools are reshaping qualitative research workflows.</p>
+            <p class="blog-card-category">Sustainability</p>
+            <h3 class="blog-card-title">ESG and SDG: Paving the Way for Sustainable Industrial Development</h3>
+            <p class="blog-card-excerpt">ESG and SDG are key frameworks for organizations to navigate risks, drive sustainable growth, and contribute to a more sustainable future. The furniture industry is…</p>
             <div class="blog-card-meta">
-              <span>Apr 10, 2026</span>
-              <span>6 min read</span>
+              <span>Nov 30, 2022</span>
+              <span>4 min read</span>
             </div>
           </div>
         </a>
 
-        <a href="blog/speculative-design-framework.html" class="blog-card fade-up">
+        <a href="blog/taiwan-excellence-exhibition.html" class="blog-card fade-up">
           <div class="blog-card-img">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" alt="Speculative Design">
+            <img src="assets/img/blog/taiwan-excellence-exhibition/01.png" alt="Discovering Innovation Island: A Day at Taiwan&#x27;s Excellence Exhibition" loading="lazy">
           </div>
           <div class="blog-card-body">
-            <p class="blog-card-category">Design Thinking</p>
-            <h3 class="blog-card-title">A Framework for Speculative Design in Health Tech</h3>
-            <p class="blog-card-excerpt">Reflecting on the process of designing near-future health monitoring devices
-              using speculative design methodologies.</p>
+            <p class="blog-card-category">Exhibition</p>
+            <h3 class="blog-card-title">Discovering Innovation Island: A Day at Taiwan&#x27;s Excellence Exhibition</h3>
+            <p class="blog-card-excerpt">Nestled in the bustling Nangang District of Taipei City, the Taiwan Excellence Exhibition stands as a testament to Taiwan&#x27;s relentless pursuit of innovation. This…</p>
             <div class="blog-card-meta">
-              <span>Mar 28, 2026</span>
-              <span>8 min read</span>
+              <span>Dec 19, 2019</span>
+              <span>3 min read</span>
             </div>
           </div>
         </a>
 
-        <a href="blog/vr-spatial-reasoning-lessons.html" class="blog-card fade-up">
+        <a href="blog/experience-klook-travel-app.html" class="blog-card fade-up">
           <div class="blog-card-img">
-            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=600&q=80" alt="VR Research">
+            <img src="assets/img/blog/experience-klook-travel-app/01.png" alt="Experience KLOOK – APP Traveling Service" loading="lazy">
           </div>
           <div class="blog-card-body">
-            <p class="blog-card-category">Virtual Reality</p>
-            <h3 class="blog-card-title">What I Learned Building a VR Spatial Reasoning System</h3>
-            <p class="blog-card-excerpt">Lessons from designing and evaluating a VR application that helps students
-              develop spatial reasoning perception.</p>
+            <p class="blog-card-category">Industry Visit</p>
+            <h3 class="blog-card-title">Experience KLOOK – APP Traveling Service</h3>
+            <p class="blog-card-excerpt">Ever wondered how some companies manage to redefine the way we travel? Let me take you behind the scenes of one such game-changer: KLOOK. Based in Taiwan, KLOOK isn&#x27;t…</p>
             <div class="blog-card-meta">
-              <span>Mar 15, 2026</span>
-              <span>5 min read</span>
+              <span>Dec 19, 2019</span>
+              <span>3 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog/observation-in-design-nikoi-sanniez.html" class="blog-card fade-up">
+          <div class="blog-card-img">
+            <img src="assets/img/blog/observation-in-design-nikoi-sanniez/01.png" alt="Observation in Design, Why it Matters? By Nikoi Sanniez" loading="lazy">
+          </div>
+          <div class="blog-card-body">
+            <p class="blog-card-category">Design Seminar</p>
+            <h3 class="blog-card-title">Observation in Design, Why it Matters? By Nikoi Sanniez</h3>
+            <p class="blog-card-excerpt">In the ever-evolving world of design, the journey from concept to creation is both an art and a science. Recently, I had the privilege of attending a seminar led by the…</p>
+            <div class="blog-card-meta">
+              <span>Dec 19, 2019</span>
+              <span>3 min read</span>
             </div>
           </div>
         </a>
